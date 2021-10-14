@@ -1,0 +1,1 @@
+2021-10-13 8:03:32 - PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\xampp\htdocs\bizzsite\system\library\mail\mail.php on line 77

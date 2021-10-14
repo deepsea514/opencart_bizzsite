@@ -1,0 +1,54 @@
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <h5>Onze producten</h5>
+		<ul class="list-unstyled">
+          <li><i class="fa fa-angle-right"></i>        <a href="/">Computers & Werkstations	</a></li>
+          <li><i class="fa fa-angle-right"></i>        <a href="/">Laptops & Notebooks</a></li>
+          <li><i class="fa fa-angle-right"></i>        <a href="/">Tablets</a></li>
+          <li><i class="fa fa-angle-right"></i>        <a href="/">Telefoons & Simkaarten</a></li>
+          <li><i class="fa fa-angle-right"></i>        <a href="/">Telefoon & Tablet reparatie</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-3">
+        <h5>Zakelijk diensten</h5>
+        <ul class="list-unstyled">
+          <li><i class="fa fa-angle-right"></i>        <a href="/">Producten</a></li>
+          <li><i class="fa fa-angle-right"></i>        <a href="/">Online Werkplek</a></li>
+          <li><i class="fa fa-angle-right"></i>        <a href="/">Telecom & Internet</a></li>
+          <li><i class="fa fa-angle-right"></i>        <a href="/">ICT & beveiliging</a></li>
+          <li><i class="fa fa-angle-right"></i>        <a href="/">Websites</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-3">
+        <h5>Bereikbaarheid</h5>
+        <ul class="list-unstyled">
+          <li><a>De Mors 33, 7631 AH Ootmarsum</a></li>
+          <li><a>Maandag     08.30 - 17:30 uur</a></li>
+          <li><a>Dinsdag     08.30 - 17:30 uur</a></li>          
+          <li><a>Woensdag    08.30 - 17:30 uur</a></li>
+          <li><a>Donderdag   08.30 - 17:30 uur</a></li>
+          <li><a>Vrijdag     08.30 - 17:30 uur</a></li>
+		      <li><a>Zaterdag    09.00 - 15:00 uur</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-3">
+        <img src="./image/catalog/hfff.png" alt="office">
+      </div>
+    </div>
+    <hr>
+    <p>{{ powered }}</p>
+  </div>
+</footer>
+{% for style in styles %}
+<link href="{{ style.href }}" type="text/css" rel="{{ style.rel }}" media="{{ style.media }}" />
+{% endfor %}
+{% for script in scripts %}
+<script src="{{ script }}" type="text/javascript"></script>
+{% endfor %}
+<!--
+OpenCart is open source software and you are free to remove the powered by OpenCart if you want, but its generally accepted practise to make a small donation.
+Please donate via PayPal to donate@opencart.com
+//-->
+</body></html>
