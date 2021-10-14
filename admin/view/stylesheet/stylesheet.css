@@ -4,7 +4,7 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    font-family: 'Open Sans', sans-serif;
+    font-family: Nunito;
     color: #545454;
     text-rendering: optimizeLegibility;
 }
@@ -21,7 +21,7 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 .page-header h1 {
-    font-family: 'Open Sans', sans-serif;
+    font-family: Nunito;
     font-weight: 300;
     font-size: 30px;
     color: #4c4d5a;

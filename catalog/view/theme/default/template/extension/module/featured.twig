@@ -15,46 +15,18 @@
                   </div>
                   <div class="col-md-6">
                       <div class="col-md-12 d-flex pc-box">
+                      {% for product in products|slice(0,4) %}
                           <div class="col-md-3">
                               <div class="pc-img">
-                                  <img src="./image/catalog/images/lap1.png" alt="laptop">
+                                  <a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" /></a>
                               </div>
                               <div class="laptop-text">
-                                  <p>Acer Aspire 3 15.6" Intel C...</p>
-                                  <p>€699.99</p>
-                                  <p>Laptop's</p>
+                                  <p><a href="{{ product.href }}">{{ product.name|slice(0,10) }}...</a></p>
+                                  <p>{{ product.price }}</p>
+                                  {# <p>{{ product.category }}</p> #}
                               </div>
                           </div>
-                          <div class="col-md-3">
-                              <div class="pc-img">
-                                  <img src="./image/catalog/images/S.png" alt="laptop">
-                              </div>
-                              <div class="laptop-text">
-                                  <p>Acer Aspire 3 17.3" Intel C...</p>
-                                  <p>€599.99</p>
-                                  <p>Laptop's</p>
-                              </div>
-                          </div>
-                          <div class="col-md-3">
-                              <div class="pc-img">
-                                  <img src="./image/catalog/images/lap3.png" alt="laptop">
-                              </div>
-                              <div class="laptop-text">
-                                  <p>Acer Aspire 3 17.3" Intel C...</p>
-                                  <p>€849.99</p>
-                                  <p>Laptop's</p>
-                              </div>
-                          </div>
-                          <div class="col-md-3">
-                              <div class="pc-img">
-                                  <img src="./image/catalog/images/lap4.png" alt="laptop">
-                              </div>
-                              <div class="laptop-text">
-                                  <p>Acer Aspire 5, 14" F-HD, L...</p>
-                                  <p>€699.99</p>
-                                  <p>Laptop's</p>
-                              </div>
-                          </div>
+                            {% endfor %}
                       </div>
                   </div>
               </div>
@@ -62,28 +34,66 @@
       </div>
   </div>
  
-  <div class="row" style="padding:20px 20px;">
- {% for product in products|slice(0,4) %}
-  <div class="product-layout col-lg-3 col-md-3 col-sm-6 col-xs-12">
-    <div class="product-thumb transition">
-      <div class="image"><a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" /></a></div>
-      <div class="caption">
-        <h4><a href="{{ product.href }}">{{ product.name }}</a></h4>
-        <p>{{ product.description }}</p>
-        <div class="btn-box">
-          <a href="javascript:void(0)">Bekijk ons aanbod</a>
+<div class="container-fluid coman-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-1"></div>
+
+                {% for product in products|slice(0,3) %}
+                    <div class="card col-md-3 d-flex" style="background: white; border: 1px solid;  border-radius: 20px; border-color: #6bffff; margin-left:10px; margin-right:15px; margin-bottom:10px; overflow: auto; ">
+                        <div class="col-md-4" style="height:180px;">
+                            <div class="card-img">
+                                <a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" /></a>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-text">
+                                <h2>Desktops & Workstations</h2>
+                                <p>Diverse laptops voor studenten of voor het bedrijfsleven. Wij adviseren u
+                                    graag
+                                    in onze winkel.</p>
+                                <div class="btn-box">
+                                    <a href="javascript:void(0)">Bekijk ons aanbod</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div>
+
+                {% for product in products|slice(3,6) %}
+                    <div class="card col-md-3 d-flex" style="background: white; border: 1px solid;  border-radius: 20px; border-color: #6bffff; margin-left:10px; margin-right:15px; margin-bottom:10px; overflow: auto; ">
+                        <div class="col-md-4"  style="height:180px;">
+                            <div class="card-img">
+                                <a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" /></a>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-text">
+                                <h2>Desktops & Workstations</h2>
+                                <p>Diverse laptops voor studenten of voor het bedrijfsleven. Wij adviseren u
+                                    graag
+                                    in onze winkel.</p>
+                                <div class="btn-box">
+                                    <a href="javascript:void(0)">Bekijk ons aanbod</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
-      </div>
+
     </div>
-  </div>
-  {% endfor %}
-</div>
 
   <div class="container-fluid">
     <div class="row">
         <div class="col-md-12" style="background-image: url(./image/catalog/images/bg.png);padding: 0;">
             <div class="mob-section">
-                <div class="col-md-6">
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
                     <div class="mob-img">
                         <img src="./image/catalog/images/mobile-price.png" alt="">
                     </div>
@@ -91,7 +101,7 @@
                         <p>* alleen op afspraak</p>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <div class="mob-text">
                         <h2>Smartphone & Tablet reparatie</h2>
                         <h4>Standard 6 maanden garantie</h4>
@@ -104,12 +114,14 @@
                         <a href="javascript:void(0)">Reparatieverzoek aanvragen</a>
                     </div>
                 </div>
+                <div class="col-md-1"></div>
+
             </div>
         </div>
     </div>
   </div>
 
-  <div class="container-fluid">
+  <div class="container-fluid" style="margin-top:15px;">
       <div class="container">
           <div class="row">
               <div class="col-md-12">

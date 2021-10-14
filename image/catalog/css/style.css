@@ -21,13 +21,12 @@ html {
       -webkit-font-smoothing: antialiased; /* WebKit  */
   }
   @font-face {
-      font-family: "Radikal";
-      src: url(../fonts/radikal.html);
+      font-family: Nunito;
   }
   body {
       margin: 0;
       padding: 0;
-      font-family: "Roboto", sans-serif;
+      font-family: Nunito;
   }
   a {
       outline: 0;
@@ -285,15 +284,15 @@ background: #2882ad;
 }
 
 .bg-set-image-1 {
-    background-image :url(./images/silder-bg.png);
+    background-image :url(../images/silder-bg.png);
 }
 
 .bg-set-image-2 {
-     background-image :url(./images/silder-bg.png);
+     background-image :url(../images/silder-bg.png);
 }
 
 .bg-set-image-3 {
-     background-image :url(./images/silder-bg.png);
+     background-image :url(../images/silder-bg.png);
 }
 
 .slide_description_wrapper {
@@ -467,7 +466,7 @@ padding-left: 19px;
 .abs-test {
   position: absolute;
   bottom: -50px;
-  left: 49%;
+  left: 60%;
 }
 .abs-test p {
   font-size: 13px;
@@ -479,7 +478,7 @@ padding-left: 19px;
 }
 .mob-img img {
   position: absolute;
-  top: 50px;
+  /*top: 5px;*/
 }
 .mob-text {
   color: #fff;

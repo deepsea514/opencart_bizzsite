@@ -9,12 +9,12 @@ class ControllerExtensionModuleFeatured extends Controller {
 
 		$data['products'] = array();
 
-		if (!$setting['limit']) {
-			$setting['limit'] = 4;
-		}
+		// if (!$setting['limit']) {
+		// 	$setting['limit'] = 4;
+		// }
 
 		if (!empty($setting['product'])) {
-			$products = array_slice($setting['product'], 0, (int)$setting['limit']);
+			$products = array_slice($setting['product'], 0, 6);
 
 			foreach ($products as $product_id) {
 				$product_info = $this->model_catalog_product->getProduct($product_id);
@@ -61,7 +61,8 @@ class ControllerExtensionModuleFeatured extends Controller {
 						'special'     => $special,
 						'tax'         => $tax,
 						'rating'      => $rating,
-						'href'        => $this->url->link('product/product', 'product_id=' . $product_info['product_id'])
+						'href'        => $this->url->link('product/product', 'product_id=' . $product_info['product_id']),
+						'category'	  => $product_info['category']
 					);
 				}
 			}

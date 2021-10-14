@@ -737,7 +737,7 @@ CREATE TABLE `oc_currency` (
 
 insert  into `oc_currency`(`currency_id`,`title`,`code`,`symbol_left`,`symbol_right`,`decimal_place`,`value`,`status`,`date_modified`) values 
 (1,'Pound Sterling','GBP','£','','2',0.61250001,1,'2014-09-25 14:40:00'),
-(2,'US Dollar','USD','$','','2',1.00000000,1,'2021-10-14 01:38:24'),
+(2,'US Dollar','USD','$','','2',1.00000000,1,'2021-10-14 05:57:23'),
 (3,'Euro','EUR','','€','2',0.78460002,1,'2014-09-25 14:40:00');
 
 /*Table structure for table `oc_custom_field` */
@@ -1545,7 +1545,7 @@ CREATE TABLE `oc_layout_module` (
   `position` varchar(14) NOT NULL,
   `sort_order` int(3) NOT NULL,
   PRIMARY KEY (`layout_module_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=105 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=107 DEFAULT CHARSET=utf8;
 
 /*Data for the table `oc_layout_module` */
 
@@ -1557,9 +1557,8 @@ insert  into `oc_layout_module`(`layout_module_id`,`layout_id`,`code`,`position`
 (68,6,'account','column_right',1),
 (72,3,'category','column_left',1),
 (73,3,'banner.30','column_left',2),
-(104,1,'featured.28','content_top',5),
-(103,1,'carousel.29','content_top',3),
-(102,1,'slideshow.27','content_top',0);
+(106,1,'featured.28','content_top',5),
+(105,1,'carousel.29','content_top',3);
 
 /*Table structure for table `oc_layout_route` */
 
@@ -1571,7 +1570,7 @@ CREATE TABLE `oc_layout_route` (
   `store_id` int(11) NOT NULL,
   `route` varchar(64) NOT NULL,
   PRIMARY KEY (`layout_route_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=64 DEFAULT CHARSET=utf8;
 
 /*Data for the table `oc_layout_route` */
 
@@ -1579,7 +1578,7 @@ insert  into `oc_layout_route`(`layout_route_id`,`layout_id`,`store_id`,`route`)
 (38,6,0,'account/%'),
 (17,10,0,'affiliate/%'),
 (44,3,0,'product/category'),
-(62,1,0,'common/home'),
+(63,1,0,'common/home'),
 (20,2,0,'product/product'),
 (24,11,0,'information/information'),
 (23,7,0,'checkout/%'),
@@ -2165,7 +2164,7 @@ insert  into `oc_product`(`product_id`,`model`,`sku`,`upc`,`ean`,`jan`,`isbn`,`m
 (36,'Product 9','','','','','','','',994,6,'catalog/demo/ipod_nano_1.jpg',8,0,100.0000,100,9,'2009-02-03',5.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,0,'2009-02-03 18:09:19','2011-09-30 01:07:12'),
 (40,'product 11','','','','','','','',970,5,'catalog/demo/iphone_1.jpg',8,1,101.0000,0,9,'2009-02-03',10.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,0,1,6,'2009-02-03 21:07:12','2011-09-30 01:06:53'),
 (41,'Product 14','','','','','','','',977,5,'catalog/demo/imac_1.jpg',8,1,100.0000,0,9,'2009-02-03',5.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,0,1,0,'2009-02-03 21:07:26','2011-09-30 01:06:44'),
-(42,'Product 15','','','','','','','',990,5,'catalog/demo/apple_cinema_30.jpg',8,1,100.0000,400,9,'2009-02-04',12.50000000,1,1.00000000,2.00000000,3.00000000,1,1,2,0,1,1,'2009-02-03 21:07:37','2011-09-30 00:46:19'),
+(42,'Product 15','','','','','','','',990,5,'catalog/demo/apple_cinema_30.jpg',8,1,100.0000,400,9,'2009-02-04',12.50000000,1,1.00000000,2.00000000,3.00000000,1,1,2,0,1,3,'2009-02-03 21:07:37','2011-09-30 00:46:19'),
 (43,'Product 16','','','','','','','',929,5,'catalog/demo/macbook_1.jpg',8,0,500.0000,0,9,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,2,'2009-02-03 21:07:49','2011-09-30 01:05:46'),
 (44,'Product 17','','','','','','','',1000,5,'catalog/demo/macbook_air_1.jpg',8,1,1000.0000,0,9,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,0,'2009-02-03 21:08:00','2011-09-30 01:05:53'),
 (45,'Product 18','','','','','','','',998,5,'catalog/demo/macbook_pro_1.jpg',8,1,2000.0000,0,100,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,0,'2009-02-03 21:08:17','2011-09-15 22:22:01'),
@@ -2830,7 +2829,7 @@ CREATE TABLE `oc_session` (
 /*Data for the table `oc_session` */
 
 insert  into `oc_session`(`session_id`,`data`,`expire`) values 
-('1f39847c53aa6aaad94a2dd6a5','{\"language\":\"en-gb\",\"currency\":\"EUR\",\"user_id\":\"1\",\"user_token\":\"aHoLewec6ZDFQp5BuJUIZ1IvPWDlK1Kw\"}','2021-10-14 05:27:29');
+('1f39847c53aa6aaad94a2dd6a5','{\"language\":\"en-gb\",\"currency\":\"EUR\",\"user_id\":\"1\",\"user_token\":\"dLj3xO5LYrVnLDqYJc65x8ApirSy4hYh\"}','2021-10-14 07:52:31');
 
 /*Table structure for table `oc_setting` */
 
@@ -2975,7 +2974,7 @@ insert  into `oc_setting`(`setting_id`,`store_id`,`code`,`key`,`value`,`serializ
 (124,0,'module_category','module_category_status','1',0),
 (125,0,'module_account','module_account_status','1',0),
 (126,0,'theme_default','theme_default_product_limit','15',0),
-(127,0,'theme_default','theme_default_product_description_length','100',0),
+(127,0,'theme_default','theme_default_product_description_length','90',0),
 (128,0,'theme_default','theme_default_image_thumb_width','228',0),
 (129,0,'theme_default','theme_default_image_thumb_height','228',0),
 (130,0,'theme_default','theme_default_image_popup_width','500',0),
@@ -3216,7 +3215,7 @@ CREATE TABLE `oc_theme` (
   `code` mediumtext NOT NULL,
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`theme_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
 /*Data for the table `oc_theme` */
 

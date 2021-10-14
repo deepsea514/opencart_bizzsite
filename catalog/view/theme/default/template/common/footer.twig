@@ -12,13 +12,10 @@
                                             Onze producten
                                         </h5>
                                         <ul class="footer-menu  list-style">
-                                            <li><i class="fa fa-angle-right"></i><a href="#">Computers & Werkstations</a></li>
-                                            <li><i class="fa fa-angle-right"></i><a href="#">Laptops & Notebooks</a>
-                                            </li> <br>
-                                            <li><i class="fa fa-angle-right"></i><a href="#">Tablets</a></li>
-                                            <li><i class="fa fa-angle-right"></i><a href="#">Telefoons & Simkaarten</a>
-                                            </li>
-                                            <li><i class="fa fa-angle-right"></i><a href="#">Telefoon & Tablet reparatie</a></li>
+                                        {% for category in categories|slice(0,5) %}
+                                            <li><i class="fa fa-angle-right"></i><a href="{{ category.href }}">{{ category.name }}</a></li>
+                                        {% endfor %}
+                                         
                                         </ul>
                                     </div>
                                 </div>

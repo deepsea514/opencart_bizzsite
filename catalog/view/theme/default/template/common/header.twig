@@ -23,6 +23,7 @@
 <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
 <link href="catalog/view/theme/default/stylesheet/stylesheet.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Nunito" />
 {% for style in styles %}
 <link href="{{ style.href }}" type="text/css" rel="{{ style.rel }}" media="{{ style.media }}" />
 {% endfor %}
@@ -37,7 +38,7 @@
 {{ analytic }}
 {% endfor %}
 </head>
-<body>
+<body style="font-family:Nunito">
    <section id="top-header">
 		 <div class="top-barcurve">
 			<div class="container p-0 pd-r0">
@@ -66,7 +67,7 @@
           <h1><a href="{{ home }}">{{ name }}</a></h1>
           {% endif %}</div>
       </div>
-      <div class="col-sm-8">{{ menu }}</div>
+      <div class="col-sm-9">{{ menu }}</div>
     </div>
   </div>
 </header>
