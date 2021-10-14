@@ -285,15 +285,15 @@ background: #2882ad;
 }
 
 .bg-set-image-1 {
-    background-image :url(../images/silder-bg.png);
+    background-image :url(./images/silder-bg.png);
 }
 
 .bg-set-image-2 {
-     background-image :url(../images/silder-bg.png);
+     background-image :url(./images/silder-bg.png);
 }
 
 .bg-set-image-3 {
-     background-image :url(../images/silder-bg.png);
+     background-image :url(./images/silder-bg.png);
 }
 
 .slide_description_wrapper {
@@ -549,7 +549,6 @@ padding-left: 19px;
   padding: 15px;
   background: #fff;
   border-radius: 8px;
-  margin-right: 2px;
 }
 .pc-img,
 .laptop-text {

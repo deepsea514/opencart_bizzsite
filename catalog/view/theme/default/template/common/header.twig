@@ -60,12 +60,13 @@
 <header style="margin-top:10px">
   <div class="container">
     <div class="row">
+    <div class="col-sm-1"> </div>
       <div class="col-sm-2">
         <div id="logo">{% if logo %}<a href="{{ home }}"><img src="{{ logo }}" title="{{ name }}" alt="{{ name }}" class="img-responsive" /></a>{% else %}
           <h1><a href="{{ home }}">{{ name }}</a></h1>
           {% endif %}</div>
       </div>
-      <div class="col-sm-10">{{ menu }}</div>
+      <div class="col-sm-8">{{ menu }}</div>
     </div>
   </div>
 </header>

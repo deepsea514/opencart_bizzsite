@@ -538,7 +538,9 @@ html[dir=rtl] .breadcrumb > li::after {
 }
 /* product list */
 .product-thumb {
-	border: 1px solid #ddd;
+	border: 1px solid;
+	border-radius: 20px;
+	border-color: #6bffff;
 	margin-bottom: 20px;
 	overflow: auto;
 }
@@ -627,8 +629,8 @@ h2.price {
 	display: block;
 }
 .product-thumb .button-group {
-	border-top: 1px solid #ddd;
-	background-color: #eee;
+	border-top: 1px solid;
+	background-color: #2f4555;
 	overflow: auto;
 }
 .product-list .product-thumb .button-group {

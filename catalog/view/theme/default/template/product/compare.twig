@@ -111,12 +111,12 @@
         </tbody>
         {% endfor %}
         {% endfor %}
-        <tr>
+        {# <tr>
           <td></td>
           {% for product in products %}
           <td><input type="button" value="{{ button_cart }}" class="btn btn-primary btn-block" onclick="cart.add('{{ product.product_id }}', '{{ product.minimum }}');" />
             <a href="{{ product.remove }}" class="btn btn-danger btn-block">{{ button_remove }}</a></td>
-          {% endfor %} </tr>
+          {% endfor %} </tr> #}
       </table>
       {% else %}
       <p>{{ text_empty }}</p>

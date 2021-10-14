@@ -1,42 +1,124 @@
-<h3>{{ heading_title }}</h3>
-<div class="row">
- {% for product in products %}
+  <div class="container-fluid coman-bg">
+      <div class="container">
+          <div class="row">
+              <div class="pc-section">
+                  <div class="col-md-6">
+                      <div class="pc-text">
+                          <p>Nieuwe en gebruikte producten</p>
+                          <h2>Bekijk ons volledig aanbod</h2>
+                          <p class="gray-text">Wij helpen u graag met de aankoop van hard en software. Wij kunnen voor
+                              u
+                              kant-en-klare computers, printers, laptops (Windows en Apple) tablets, smartphones,
+                              software zoals Microsoft Office, Antivirus pakketten. Een maatwerk computer
+                              samenstellen naar wens van de klant.</p>
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="col-md-12 d-flex pc-box">
+                          <div class="col-md-3">
+                              <div class="pc-img">
+                                  <img src="./image/catalog/images/lap1.png" alt="laptop">
+                              </div>
+                              <div class="laptop-text">
+                                  <p>Acer Aspire 3 15.6" Intel C...</p>
+                                  <p>€699.99</p>
+                                  <p>Laptop's</p>
+                              </div>
+                          </div>
+                          <div class="col-md-3">
+                              <div class="pc-img">
+                                  <img src="./image/catalog/images/S.png" alt="laptop">
+                              </div>
+                              <div class="laptop-text">
+                                  <p>Acer Aspire 3 17.3" Intel C...</p>
+                                  <p>€599.99</p>
+                                  <p>Laptop's</p>
+                              </div>
+                          </div>
+                          <div class="col-md-3">
+                              <div class="pc-img">
+                                  <img src="./image/catalog/images/lap3.png" alt="laptop">
+                              </div>
+                              <div class="laptop-text">
+                                  <p>Acer Aspire 3 17.3" Intel C...</p>
+                                  <p>€849.99</p>
+                                  <p>Laptop's</p>
+                              </div>
+                          </div>
+                          <div class="col-md-3">
+                              <div class="pc-img">
+                                  <img src="./image/catalog/images/lap4.png" alt="laptop">
+                              </div>
+                              <div class="laptop-text">
+                                  <p>Acer Aspire 5, 14" F-HD, L...</p>
+                                  <p>€699.99</p>
+                                  <p>Laptop's</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+ 
+  <div class="row" style="padding:20px 20px;">
+ {% for product in products|slice(0,4) %}
   <div class="product-layout col-lg-3 col-md-3 col-sm-6 col-xs-12">
     <div class="product-thumb transition">
       <div class="image"><a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" /></a></div>
       <div class="caption">
         <h4><a href="{{ product.href }}">{{ product.name }}</a></h4>
         <p>{{ product.description }}</p>
-        {% if product.rating %}
-        <div class="rating">
-          {% for i in 5 %}
-          {% if product.rating < i %}
-          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-          {% else %}
-          <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-          {% endif %}
-          {% endfor %}
+        <div class="btn-box">
+          <a href="javascript:void(0)">Bekijk ons aanbod</a>
         </div>
-        {% endif %}
-        {% if product.price %}
-        <p class="price">
-          {% if not product.special %}
-          {{ product.price }}
-          {% else %}
-          <span class="price-new">{{ product.special }}</span> <span class="price-old">{{ product.price }}</span>
-          {% endif %}
-          {% if product.tax %}
-          <span class="price-tax">{{ text_tax }} {{ product.tax }}</span>
-          {% endif %}
-        </p>
-        {% endif %}
       </div>
-      {# <div class="button-group">
-        <button type="button" onclick="cart.add('{{ product.product_id }}');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md">{{ button_cart }}</span></button>
-        <button type="button" data-toggle="tooltip" title="{{ button_wishlist }}" onclick="wishlist.add('{{ product.product_id }}');"><i class="fa fa-heart"></i></button>
-        <button type="button" data-toggle="tooltip" title="{{ button_compare }}" onclick="compare.add('{{ product.product_id }}');"><i class="fa fa-exchange"></i></button>
-      </div> #}
     </div>
   </div>
   {% endfor %}
 </div>
+
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12" style="background-image: url(./image/catalog/images/bg.png);padding: 0;">
+            <div class="mob-section">
+                <div class="col-md-6">
+                    <div class="mob-img">
+                        <img src="./image/catalog/images/mobile-price.png" alt="">
+                    </div>
+                    <div class="abs-test">
+                        <p>* alleen op afspraak</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mob-text">
+                        <h2>Smartphone & Tablet reparatie</h2>
+                        <h4>Standard 6 maanden garantie</h4>
+                        <p>Reparatie van uw smartphone of tablet meestal binnen 30 minuten (op afspraak)
+                            terwijl u geniet van een heerlijk bakje koffie of thee. Willen altijd de beste
+                            service
+                            bieden en daarom doen wij er alles aan om uw toestel op de best mogelijke
+                            manier te maken. Daarnaast krijgt u 6 maanden garantie (hardware) wanneer u
+                            uw smartphone, tablet laat repareren bij ons.</p>
+                        <a href="javascript:void(0)">Reparatieverzoek aanvragen</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="contact-banner">
+                      <h2>Altijd profesioneel en snel ondersteuning nodig? <a href="#">0541 - 355
+                              919</a>
+                      </h2>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
