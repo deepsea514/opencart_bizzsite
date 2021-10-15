@@ -1589,7 +1589,7 @@ CREATE TABLE `oc_layout_module` (
   `position` varchar(14) NOT NULL,
   `sort_order` int(3) NOT NULL,
   PRIMARY KEY (`layout_module_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=116 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=124 DEFAULT CHARSET=utf8;
 
 /*Data for the table `oc_layout_module` */
 
@@ -1599,8 +1599,10 @@ insert  into `oc_layout_module`(`layout_module_id`,`layout_id`,`code`,`position`
 (20,5,'0','column_left',2),
 (69,10,'account','column_right',1),
 (68,6,'account','column_right',1),
-(113,2,'filter','column_left',0),
-(115,3,'filter','column_left',1),
+(123,3,'category','column_left',1),
+(118,2,'filter','column_left',0),
+(119,2,'category','column_left',1),
+(122,3,'filter','column_left',0),
 (108,1,'featured.28','content_top',5),
 (107,1,'carousel.29','content_top',3);
 
@@ -1614,16 +1616,16 @@ CREATE TABLE `oc_layout_route` (
   `store_id` int(11) NOT NULL,
   `route` varchar(64) NOT NULL,
   PRIMARY KEY (`layout_route_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=72 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=77 DEFAULT CHARSET=utf8;
 
 /*Data for the table `oc_layout_route` */
 
 insert  into `oc_layout_route`(`layout_route_id`,`layout_id`,`store_id`,`route`) values 
 (38,6,0,'account/%'),
 (17,10,0,'affiliate/%'),
-(71,3,0,'product/category'),
+(76,3,0,'product/category'),
 (64,1,0,'common/home'),
-(69,2,0,'product/product'),
+(74,2,0,'product/product'),
 (24,11,0,'information/information'),
 (23,7,0,'checkout/%'),
 (31,8,0,'information/contact'),
@@ -2894,7 +2896,7 @@ CREATE TABLE `oc_session` (
 /*Data for the table `oc_session` */
 
 insert  into `oc_session`(`session_id`,`data`,`expire`) values 
-('1f39847c53aa6aaad94a2dd6a5','{\"user_id\":\"1\",\"user_token\":\"WaPTBBjx2Rfev0GBwfXV4Xm4TRN1EEV7\",\"language\":\"en-gb\",\"currency\":\"EUR\"}','2021-10-15 08:48:50');
+('1f39847c53aa6aaad94a2dd6a5','{\"user_id\":\"1\",\"user_token\":\"WaPTBBjx2Rfev0GBwfXV4Xm4TRN1EEV7\",\"language\":\"en-gb\",\"currency\":\"EUR\"}','2021-10-15 08:59:12');
 
 /*Table structure for table `oc_setting` */
 
