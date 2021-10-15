@@ -1,0 +1,37 @@
+{{ header }}
+<div class="container">
+	<div class="row">
+		<ul class="breadcrumb">
+			{% for breadcrumb in breadcrumbs %}
+				<li>
+					<a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a>
+				</li>
+			{% endfor %}
+		</ul>
+		{% for category in categories %}
+			<div class="product-layout col-lg-4 col-md-4 col-sm-6 col-xs-12">
+				<div class="product-thumb transition">
+					<div class="image" id="categoryListContainer">
+						<img id="categoryListImg" src="{{ category.image }}" alt="{{ category.name }}" title="{{ category.name }}" class="img-responsive"/>
+						<div id="categoryListOverlay"></div>
+						<div id="categoryListbutton">
+							<button>
+								<a href="{{ category.href }}">
+									Beikjk
+								</a>
+							</button>
+						</div>
+					</div>
+					<div style="text-align:center">
+						<h3>
+							{# <a href="{{ category.href }}">{{ category.name }}</a> #}
+							{{ category.name }}
+						</h3>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+</div>
+
+{{ footer }}

@@ -804,3 +804,46 @@ html[dir=rtl] #cart .dropdown-menu {
     }
    
 }
+#categoryListContainer{
+	position: relative;
+}
+
+#categoryListContainer:hover #categoryListOverlay {
+	display: block;
+	background: rgba(0, 0, 0, .3);
+}
+#categoryListbutton {
+	width: 100%;
+	position: absolute;
+	top: 100px;
+	text-align: center !important;
+	opacity: 0;
+	transition: opacity .75s eas;
+}
+
+#categoryListbutton button {
+	height: 50px;
+	width: 100px;
+	text-align: center !important;
+	background-color: #28343d;
+	color:white;
+	border-color: #28343d;
+	z-index: 1;
+	font-size:20px;
+	font-weight:bold;
+	border-radius: 3px;
+  }
+
+#categoryListOverlay{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(28, 34, 3d, 0);
+	transition: background 0.9s ease;
+}
+#categoryListContainer:hover #categoryListbutton {
+	opacity: 1;
+}
+  

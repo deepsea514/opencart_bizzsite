@@ -1,29 +1,32 @@
 <?php
-class ControllerCommonHome extends Controller {
+class ControllerCommonCategoryList extends Controller {
 	public function index() {
-		$this->document->setTitle($this->config->get('config_meta_title'));
-		$this->document->setDescription($this->config->get('config_meta_description'));
-		$this->document->setKeywords($this->config->get('config_meta_keyword'));
 
 		if (isset($this->request->get['route'])) {
 			$this->document->addLink($this->config->get('config_url'), 'canonical');
 		}
 
-		$data['column_left'] = $this->load->controller('common/column_left');
-		$data['column_right'] = $this->load->controller('common/column_right');
-		$data['content_top'] = $this->load->controller('common/content_top');
-		$data['content_bottom'] = $this->load->controller('common/content_bottom');
+
+		$this->load->language('product/category');
+		$this->load->language('common/menu');
+
+		$this->load->model('catalog/category');
+		$this->load->model('catalog/product');
+		
+
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
 
+		$data['breadcrumbs'] = array();
+		$data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
+			'href' => $this->url->link('common/home')
+		);
 
-
-		$this->load->language('common/menu');
-
-		// Menu
-		$this->load->model('catalog/category');
-
-		$this->load->model('catalog/product');
+		$data['breadcrumbs'][] = array(
+			'text' => "CategoryList",
+			'href' => $this->url->link('common/category_list')
+		);
 
 		$data['categories'] = array();
 
@@ -49,9 +52,9 @@ class ControllerCommonHome extends Controller {
 				}
 
 				if ($category['image']) {
-					$image = $this->model_tool_image->resize($category['image'], 51, 45);
+					$image = $this->model_tool_image->resize($category['image'], 250, 250);
 				} else {
-					$image = $this->model_tool_image->resize('placeholder.png', 51, 45);
+					$image = $this->model_tool_image->resize('placeholder.png', 250, 250);
 				}
 
 				// Level 1
@@ -65,9 +68,6 @@ class ControllerCommonHome extends Controller {
 			}
 		}
 
-		$data['product_link'] = $this->url->link('common/category_list');
-
-
-		$this->response->setOutput($this->load->view('common/home', $data));
+		$this->response->setOutput($this->load->view('common/category_list', $data));
 	}
 }
