@@ -540,7 +540,7 @@ html[dir=rtl] .breadcrumb > li::after {
 .product-thumb {
 	border: 1px solid;
 	border-radius: 20px;
-	border-color: #6bffff;
+	border-color: #ddd;
 	margin-bottom: 20px;
 	overflow: auto;
 }

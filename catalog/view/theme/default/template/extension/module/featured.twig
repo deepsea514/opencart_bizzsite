@@ -40,21 +40,19 @@
                 <div class="col-md-1"></div>
 
                 {% for product in products|slice(0,3) %}
-                    <div class="card col-md-3 d-flex" style="background: white; border: 1px solid;  border-radius: 20px; border-color: #6bffff; margin-left:10px; margin-right:15px; margin-bottom:10px; overflow: auto; ">
-                        <div class="col-md-4" style="height:180px;">
+                    <div class="card col-md-3 d-flex" style="background: white; border: 1px solid;  border-radius: 20px; border-color: #6bffff; margin-left:10px; margin-right:15px; margin-bottom:10px; overflow: hide; height:180px;">
+                        <div class="col-md-4" style="height:120px;">
                             <div class="card-img">
                                 <a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" /></a>
                             </div>
                         </div>
                         <div class="col-md-8">
-                            <div class="card-text">
-                                <h2>Desktops & Workstations</h2>
-                                <p>Diverse laptops voor studenten of voor het bedrijfsleven. Wij adviseren u
-                                    graag
-                                    in onze winkel.</p>
-                                <div class="btn-box">
-                                    <a href="javascript:void(0)">Bekijk ons aanbod</a>
-                                </div>
+                            <div class="card-text" style="height:120px">
+                                <h2>{{ product.name }}</h2>
+                                <p>{{ product.description }}</p>
+                            </div>
+                            <div class="btn-box" style="bottom:5px;">
+                                    <a href="{{ product.href }}">Bekijk ons aanbod</a>
                             </div>
                         </div>
                     </div>
@@ -64,21 +62,19 @@
                 <div class="col-md-1"></div>
 
                 {% for product in products|slice(3,6) %}
-                    <div class="card col-md-3 d-flex" style="background: white; border: 1px solid;  border-radius: 20px; border-color: #6bffff; margin-left:10px; margin-right:15px; margin-bottom:10px; overflow: auto; ">
-                        <div class="col-md-4"  style="height:180px;">
+                    <div class="card col-md-3 d-flex" style="background: white; border: 1px solid;  border-radius: 20px; border-color: #6bffff; margin-left:10px; margin-right:15px; margin-bottom:10px; overflow: hide; height:180px;">
+                        <div class="col-md-4" style="height:120px;">
                             <div class="card-img">
                                 <a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" /></a>
                             </div>
                         </div>
                         <div class="col-md-8">
-                            <div class="card-text">
-                                <h2>Desktops & Workstations</h2>
-                                <p>Diverse laptops voor studenten of voor het bedrijfsleven. Wij adviseren u
-                                    graag
-                                    in onze winkel.</p>
-                                <div class="btn-box">
-                                    <a href="javascript:void(0)">Bekijk ons aanbod</a>
-                                </div>
+                            <div class="card-text" style="height:120px">
+                                <h2>{{ product.name }}</h2>
+                                <p>{{ product.description }}</p>
+                            </div>
+                            <div class="btn-box" style="bottom:5px;">
+                                    <a href="{{ product.href }}">Bekijk ons aanbod</a>
                             </div>
                         </div>
                     </div>
