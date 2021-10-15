@@ -265,7 +265,7 @@ CREATE TABLE `oc_category` (
 /*Data for the table `oc_category` */
 
 insert  into `oc_category`(`category_id`,`image`,`parent_id`,`top`,`column`,`sort_order`,`status`,`date_added`,`date_modified`) values 
-(27,'',0,0,0,2,1,'2009-01-31 01:55:34','2021-10-13 08:15:25'),
+(27,'',0,0,0,2,1,'2009-01-31 01:55:34','2021-10-15 06:06:43'),
 (20,'catalog/demo/compaq_presario.jpg',0,1,1,1,1,'2009-01-05 21:49:43','2011-07-16 02:14:42'),
 (24,'',0,1,1,5,1,'2009-01-20 02:36:26','2021-10-13 08:13:16'),
 (18,'catalog/demo/hp_2.jpg',0,1,0,2,1,'2009-01-05 21:49:15','2021-10-13 08:13:45'),
@@ -293,10 +293,10 @@ CREATE TABLE `oc_category_description` (
 
 insert  into `oc_category_description`(`category_id`,`language_id`,`name`,`description`,`meta_title`,`meta_description`,`meta_keyword`) values 
 (33,1,'Cameras','','Cameras','',''),
-(27,1,' WIFI/Internet','',' WIFI/Internet','',''),
 (26,1,'Teleffons','','Teleffons','',''),
 (24,1,'Apple','','Phones &amp; PDAs','',''),
 (20,1,'Desktops','&lt;p&gt;\r\n	Example of category description text&lt;/p&gt;\r\n','Desktops','Example of category description',''),
+(27,1,' WIFI/Internet','',' WIFI/Internet','',''),
 (18,1,'Laptops','&lt;p&gt;\r\n	Shop Laptop feature only the best laptop deals on the market. By comparing laptop deals from the likes of PC World, Comet, Dixons, The Link and Carphone Warehouse, Shop Laptop has the most comprehensive selection of laptops on the internet. At Shop Laptop, we pride ourselves on offering customers the very best laptop deals. From refurbished laptops to netbooks, Shop Laptop ensures that every laptop - in every colour, style, size and technical spec - is featured on the site at the lowest possible price.&lt;/p&gt;\r\n','Laptops &amp; Notebooks','',''),
 (57,1,'Tablets','','Tablets','','');
 
@@ -311,6 +311,10 @@ CREATE TABLE `oc_category_filter` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 /*Data for the table `oc_category_filter` */
+
+insert  into `oc_category_filter`(`category_id`,`filter_id`) values 
+(27,1),
+(27,5);
 
 /*Table structure for table `oc_category_path` */
 
@@ -737,7 +741,7 @@ CREATE TABLE `oc_currency` (
 
 insert  into `oc_currency`(`currency_id`,`title`,`code`,`symbol_left`,`symbol_right`,`decimal_place`,`value`,`status`,`date_modified`) values 
 (1,'Pound Sterling','GBP','£','','2',0.61250001,1,'2014-09-25 14:40:00'),
-(2,'US Dollar','USD','$','','2',1.00000000,1,'2021-10-15 04:27:17'),
+(2,'US Dollar','USD','$','','2',1.00000000,1,'2021-10-15 06:23:49'),
 (3,'Euro','EUR','','€','2',0.78460002,1,'2014-09-25 14:40:00');
 
 /*Table structure for table `oc_custom_field` */
@@ -1168,7 +1172,7 @@ CREATE TABLE `oc_extension` (
   `type` varchar(32) NOT NULL,
   `code` varchar(32) NOT NULL,
   PRIMARY KEY (`extension_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
 
 /*Data for the table `oc_extension` */
 
@@ -1213,7 +1217,15 @@ insert  into `oc_extension`(`extension_id`,`type`,`code`) values
 (39,'report','customer_activity'),
 (40,'report','customer_order'),
 (41,'report','customer_reward'),
-(42,'advertise','google');
+(42,'advertise','google'),
+(43,'module','filter'),
+(44,'captcha','basic'),
+(45,'captcha','google'),
+(46,'feed','google_sitemap'),
+(47,'module','information'),
+(48,'module','html'),
+(49,'module','store'),
+(50,'module','special');
 
 /*Table structure for table `oc_extension_install` */
 
@@ -1252,9 +1264,20 @@ CREATE TABLE `oc_filter` (
   `filter_group_id` int(11) NOT NULL,
   `sort_order` int(3) NOT NULL,
   PRIMARY KEY (`filter_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 /*Data for the table `oc_filter` */
+
+insert  into `oc_filter`(`filter_id`,`filter_group_id`,`sort_order`) values 
+(4,1,0),
+(3,1,0),
+(2,1,0),
+(1,1,0),
+(5,2,0),
+(6,2,0),
+(7,2,0),
+(8,3,0),
+(9,3,0);
 
 /*Table structure for table `oc_filter_description` */
 
@@ -1270,6 +1293,17 @@ CREATE TABLE `oc_filter_description` (
 
 /*Data for the table `oc_filter_description` */
 
+insert  into `oc_filter_description`(`filter_id`,`language_id`,`filter_group_id`,`name`) values 
+(3,1,1,'15,6 Inch'),
+(2,1,1,'14 Inch'),
+(1,1,1,'13,3 Inch '),
+(4,1,1,'17,3 Inch'),
+(5,1,2,'Als Nieuw'),
+(6,1,2,'Nieuw'),
+(7,1,2,'Refurbished'),
+(8,1,3,'Apple'),
+(9,1,3,'Samsung');
+
 /*Table structure for table `oc_filter_group` */
 
 DROP TABLE IF EXISTS `oc_filter_group`;
@@ -1278,9 +1312,14 @@ CREATE TABLE `oc_filter_group` (
   `filter_group_id` int(11) NOT NULL AUTO_INCREMENT,
   `sort_order` int(3) NOT NULL,
   PRIMARY KEY (`filter_group_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 /*Data for the table `oc_filter_group` */
+
+insert  into `oc_filter_group`(`filter_group_id`,`sort_order`) values 
+(1,1),
+(2,2),
+(3,3);
 
 /*Table structure for table `oc_filter_group_description` */
 
@@ -1294,6 +1333,11 @@ CREATE TABLE `oc_filter_group_description` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 /*Data for the table `oc_filter_group_description` */
+
+insert  into `oc_filter_group_description`(`filter_group_id`,`language_id`,`name`) values 
+(1,1,'Length'),
+(2,1,'Nieuw'),
+(3,1,'Brand');
 
 /*Table structure for table `oc_geo_zone` */
 
@@ -1545,7 +1589,7 @@ CREATE TABLE `oc_layout_module` (
   `position` varchar(14) NOT NULL,
   `sort_order` int(3) NOT NULL,
   PRIMARY KEY (`layout_module_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=109 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=116 DEFAULT CHARSET=utf8;
 
 /*Data for the table `oc_layout_module` */
 
@@ -1555,8 +1599,8 @@ insert  into `oc_layout_module`(`layout_module_id`,`layout_id`,`code`,`position`
 (20,5,'0','column_left',2),
 (69,10,'account','column_right',1),
 (68,6,'account','column_right',1),
-(72,3,'category','column_left',1),
-(73,3,'banner.30','column_left',2),
+(113,2,'filter','column_left',0),
+(115,3,'filter','column_left',1),
 (108,1,'featured.28','content_top',5),
 (107,1,'carousel.29','content_top',3);
 
@@ -1570,16 +1614,16 @@ CREATE TABLE `oc_layout_route` (
   `store_id` int(11) NOT NULL,
   `route` varchar(64) NOT NULL,
   PRIMARY KEY (`layout_route_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=65 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=72 DEFAULT CHARSET=utf8;
 
 /*Data for the table `oc_layout_route` */
 
 insert  into `oc_layout_route`(`layout_route_id`,`layout_id`,`store_id`,`route`) values 
 (38,6,0,'account/%'),
 (17,10,0,'affiliate/%'),
-(44,3,0,'product/category'),
+(71,3,0,'product/category'),
 (64,1,0,'common/home'),
-(20,2,0,'product/product'),
+(69,2,0,'product/product'),
 (24,11,0,'information/information'),
 (23,7,0,'checkout/%'),
 (31,8,0,'information/contact'),
@@ -2153,23 +2197,23 @@ CREATE TABLE `oc_product` (
 /*Data for the table `oc_product` */
 
 insert  into `oc_product`(`product_id`,`model`,`sku`,`upc`,`ean`,`jan`,`isbn`,`mpn`,`location`,`quantity`,`stock_status_id`,`image`,`manufacturer_id`,`shipping`,`price`,`points`,`tax_class_id`,`date_available`,`weight`,`weight_class_id`,`length`,`width`,`height`,`length_class_id`,`subtract`,`minimum`,`sort_order`,`status`,`viewed`,`date_added`,`date_modified`) values 
-(28,'Product 1','','','','','','','',939,7,'catalog/demo/htc_touch_hd_1.jpg',5,1,100.0000,200,9,'2009-02-03',146.40000000,2,0.00000000,0.00000000,0.00000000,1,1,1,0,1,0,'2009-02-03 16:06:50','2011-09-30 01:05:39'),
+(28,'Product 1','','','','','','','',939,7,'catalog/demo/htc_touch_hd_1.jpg',5,1,100.0000,200,9,'2009-02-03',146.40000000,2,0.00000000,0.00000000,0.00000000,1,1,1,0,1,0,'2009-02-03 16:06:50','2021-10-15 06:10:12'),
 (29,'Product 2','','','','','','','',999,6,'catalog/demo/palm_treo_pro_1.jpg',6,1,279.9900,0,9,'2009-02-03',133.00000000,2,0.00000000,0.00000000,0.00000000,3,1,1,0,1,0,'2009-02-03 16:42:17','2011-09-30 01:06:08'),
-(30,'Product 3','','','','','','','',7,6,'catalog/demo/canon_eos_5d_1.jpg',9,1,100.0000,0,9,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,0,1,2,'2009-02-03 16:59:00','2011-09-30 01:05:23'),
+(30,'Product 3','','','','','','','',7,6,'catalog/demo/canon_eos_5d_1.jpg',9,1,100.0000,0,9,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,0,1,2,'2009-02-03 16:59:00','2021-10-15 06:02:27'),
 (31,'Product 4','','','','','','','',1000,6,'catalog/demo/nikon_d300_1.jpg',0,1,80.0000,0,9,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,3,1,1,0,1,0,'2009-02-03 17:00:10','2011-09-30 01:06:00'),
 (32,'Product 5','','','','','','','',999,6,'catalog/demo/ipod_touch_1.jpg',8,1,100.0000,0,9,'2009-02-03',5.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,0,1,0,'2009-02-03 17:07:26','2011-09-30 01:07:22'),
 (33,'Product 6','','','','','','','',1000,6,'catalog/demo/samsung_syncmaster_941bw.jpg',0,1,200.0000,0,9,'2009-02-03',5.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,1,'2009-02-03 17:08:31','2011-09-30 01:06:29'),
 (34,'Product 7','','','','','','','',1000,6,'catalog/demo/ipod_shuffle_1.jpg',8,1,100.0000,0,9,'2009-02-03',5.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,0,'2009-02-03 18:07:54','2011-09-30 01:07:17'),
 (35,'Product 8','','','','','','','',1000,5,'',0,0,100.0000,0,9,'2009-02-03',5.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,0,1,0,'2009-02-03 18:08:31','2011-09-30 01:06:17'),
 (36,'Product 9','','','','','','','',994,6,'catalog/demo/ipod_nano_1.jpg',8,0,100.0000,100,9,'2009-02-03',5.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,0,'2009-02-03 18:09:19','2011-09-30 01:07:12'),
-(40,'product 11','','','','','','','',970,5,'catalog/demo/iphone_1.jpg',8,1,101.0000,0,9,'2009-02-03',10.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,0,1,7,'2009-02-03 21:07:12','2011-09-30 01:06:53'),
-(41,'Product 14','','','','','','','',977,5,'catalog/demo/imac_1.jpg',8,1,100.0000,0,9,'2009-02-03',5.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,0,1,0,'2009-02-03 21:07:26','2011-09-30 01:06:44'),
-(42,'Product 15','','','','','','','',990,5,'catalog/demo/apple_cinema_30.jpg',8,1,100.0000,400,9,'2009-02-04',12.50000000,1,1.00000000,2.00000000,3.00000000,1,1,2,0,1,3,'2009-02-03 21:07:37','2011-09-30 00:46:19'),
+(40,'product 11','','','','','','','',970,5,'catalog/demo/iphone_1.jpg',8,1,101.0000,0,9,'2009-02-03',10.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,0,1,7,'2009-02-03 21:07:12','2021-10-15 06:10:39'),
+(41,'Product 14','','','','','','','',977,5,'catalog/demo/imac_1.jpg',8,1,100.0000,0,9,'2009-02-03',5.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,0,1,0,'2009-02-03 21:07:26','2021-10-15 06:10:22'),
+(42,'Product 15','','','','','','','',990,5,'catalog/demo/apple_cinema_30.jpg',8,1,100.0000,400,9,'2009-02-04',12.50000000,1,1.00000000,2.00000000,3.00000000,1,1,2,0,1,4,'2009-02-03 21:07:37','2021-10-15 06:02:00'),
 (43,'Product 16','','','','','','','',929,5,'catalog/demo/macbook_1.jpg',8,0,500.0000,0,9,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,5,'2009-02-03 21:07:49','2011-09-30 01:05:46'),
 (44,'Product 17','','','','','','','',1000,5,'catalog/demo/macbook_air_1.jpg',8,1,1000.0000,0,9,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,0,'2009-02-03 21:08:00','2011-09-30 01:05:53'),
 (45,'Product 18','','','','','','','',998,5,'catalog/demo/macbook_pro_1.jpg',8,1,2000.0000,0,100,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,0,'2009-02-03 21:08:17','2011-09-15 22:22:01'),
 (46,'Product 19','','','','','','','',1000,5,'catalog/demo/sony_vaio_1.jpg',10,1,1000.0000,0,9,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,0,'2009-02-03 21:08:29','2011-09-30 01:06:39'),
-(47,'Product 21','','','','','','','',1000,5,'catalog/demo/hp_1.jpg',7,1,100.0000,400,9,'2009-02-03',1.00000000,1,0.00000000,0.00000000,0.00000000,1,0,1,0,1,2,'2009-02-03 21:08:40','2011-09-30 01:05:28'),
+(47,'Product 21','','','','','','','',1000,5,'catalog/demo/hp_1.jpg',7,1,100.0000,400,9,'2009-02-03',1.00000000,1,0.00000000,0.00000000,0.00000000,1,0,1,0,1,2,'2009-02-03 21:08:40','2021-10-15 06:02:48'),
 (48,'product 20','test 1','','','','','','test 2',995,5,'catalog/demo/ipod_classic_1.jpg',8,1,100.0000,0,9,'2009-02-08',1.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,0,'2009-02-08 17:21:51','2011-09-30 01:07:06'),
 (49,'SAM1','','','','','','','',0,8,'catalog/demo/samsung_tab_1.jpg',0,1,199.9900,0,9,'2011-04-25',0.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,1,1,1,'2011-04-26 08:57:34','2011-09-30 01:06:23');
 
@@ -2189,10 +2233,10 @@ CREATE TABLE `oc_product_attribute` (
 
 insert  into `oc_product_attribute`(`product_id`,`attribute_id`,`language_id`,`text`) values 
 (43,2,1,'1'),
-(47,4,1,'16GB'),
+(47,2,1,'4'),
 (43,4,1,'8gb'),
 (42,3,1,'100mhz'),
-(47,2,1,'4');
+(47,4,1,'16GB');
 
 /*Table structure for table `oc_product_description` */
 
@@ -2225,7 +2269,7 @@ insert  into `oc_product_description`(`product_id`,`language_id`,`name`,`descrip
 (46,1,'Sony VAIO','&lt;div&gt;\r\n	Unprecedented power. The next generation of processing technology has arrived. Built into the newest VAIO notebooks lies Intel&amp;#39;s latest, most powerful innovation yet: Intel&amp;reg; Centrino&amp;reg; 2 processor technology. Boasting incredible speed, expanded wireless connectivity, enhanced multimedia support and greater energy efficiency, all the high-performance essentials are seamlessly combined into a single chip.&lt;/div&gt;\r\n','','Sony VAIO','',''),
 (47,1,'HP LP3065','&lt;p&gt;\r\n	Stop your co-workers in their tracks with the stunning new 30-inch diagonal HP LP3065 Flat Panel Monitor. This flagship monitor features best-in-class performance and presentation features on a huge wide-aspect screen while letting you work as comfortably as possible - you might even forget you&amp;#39;re at the office&lt;/p&gt;\r\n','','HP LP3065','',''),
 (32,1,'iPod Touch','&lt;p&gt;\r\n	&lt;strong&gt;Revolutionary multi-touch interface.&lt;/strong&gt;&lt;br /&gt;\r\n	iPod touch features the same multi-touch screen technology as iPhone. Pinch to zoom in on a photo. Scroll through your songs and videos with a flick. Flip through your library by album artwork with Cover Flow.&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;strong&gt;Gorgeous 3.5-inch widescreen display.&lt;/strong&gt;&lt;br /&gt;\r\n	Watch your movies, TV shows, and photos come alive with bright, vivid color on the 320-by-480-pixel display.&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;strong&gt;Music downloads straight from iTunes.&lt;/strong&gt;&lt;br /&gt;\r\n	Shop the iTunes Wi-Fi Music Store from anywhere with Wi-Fi.1 Browse or search to find the music youre looking for, preview it, and buy it with just a tap.&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;strong&gt;Surf the web with Wi-Fi.&lt;/strong&gt;&lt;br /&gt;\r\n	Browse the web using Safari and watch YouTube videos on the first iPod with Wi-Fi built in&lt;br /&gt;\r\n	&amp;nbsp;&lt;/p&gt;\r\n','','	 iPod Touch','',''),
-(41,1,'iMac','&lt;div&gt;\r\n	Just when you thought iMac had everything, now there&acute;s even more. More powerful Intel Core 2 Duo processors. And more memory standard. Combine this with Mac OS X Leopard and iLife &acute;08, and it&acute;s more all-in-one than ever. iMac packs amazing performance into a stunningly slim space.&lt;/div&gt;\r\n','','iMac','',''),
+(41,1,'iMac','&lt;div&gt;\r\n	Just when you thought iMac had everything, now there´s even more. More powerful Intel Core 2 Duo processors. And more memory standard. Combine this with Mac OS X Leopard and iLife ´08, and it´s more all-in-one than ever. iMac packs amazing performance into a stunningly slim space.&lt;/div&gt;\r\n','','iMac','',''),
 (33,1,'Samsung SyncMaster 941BW','&lt;div&gt;\r\n	Imagine the advantages of going big without slowing down. The big 19&amp;quot; 941BW monitor combines wide aspect ratio with fast pixel response time, for bigger images, more room to work and crisp motion. In addition, the exclusive MagicBright 2, MagicColor and MagicTune technologies help deliver the ideal image in every situation, while sleek, narrow bezels and adjustable stands deliver style just the way you want it. With the Samsung 941BW widescreen analog/digital LCD monitor, it&amp;#39;s not hard to imagine.&lt;/div&gt;\r\n','','Samsung SyncMaster 941BW','',''),
 (34,1,'iPod Shuffle','&lt;div&gt;\r\n	&lt;strong&gt;Born to be worn.&lt;/strong&gt;\r\n	&lt;p&gt;\r\n		Clip on the worlds most wearable music player and take up to 240 songs with you anywhere. Choose from five colors including four new hues to make your musical fashion statement.&lt;/p&gt;\r\n	&lt;p&gt;\r\n		&lt;strong&gt;Random meets rhythm.&lt;/strong&gt;&lt;/p&gt;\r\n	&lt;p&gt;\r\n		With iTunes autofill, iPod shuffle can deliver a new musical experience every time you sync. For more randomness, you can shuffle songs during playback with the slide of a switch.&lt;/p&gt;\r\n	&lt;strong&gt;Everything is easy.&lt;/strong&gt;\r\n	&lt;p&gt;\r\n		Charge and sync with the included USB dock. Operate the iPod shuffle controls with one hand. Enjoy up to 12 hours straight of skip-free music playback.&lt;/p&gt;\r\n&lt;/div&gt;\r\n','','iPod Shuffle','',''),
 (43,1,'MacBook','&lt;div&gt;\r\n	&lt;p&gt;\r\n		&lt;b&gt;Intel Core 2 Duo processor&lt;/b&gt;&lt;/p&gt;\r\n	&lt;p&gt;\r\n		Powered by an Intel Core 2 Duo processor at speeds up to 2.16GHz, the new MacBook is the fastest ever.&lt;/p&gt;\r\n	&lt;p&gt;\r\n		&lt;b&gt;1GB memory, larger hard drives&lt;/b&gt;&lt;/p&gt;\r\n	&lt;p&gt;\r\n		The new MacBook now comes with 1GB of memory standard and larger hard drives for the entire line perfect for running more of your favorite applications and storing growing media collections.&lt;/p&gt;\r\n	&lt;p&gt;\r\n		&lt;b&gt;Sleek, 1.08-inch-thin design&lt;/b&gt;&lt;/p&gt;\r\n	&lt;p&gt;\r\n		MacBook makes it easy to hit the road thanks to its tough polycarbonate case, built-in wireless technologies, and innovative MagSafe Power Adapter that releases automatically if someone accidentally trips on the cord.&lt;/p&gt;\r\n	&lt;p&gt;\r\n		&lt;b&gt;Built-in iSight camera&lt;/b&gt;&lt;/p&gt;\r\n	&lt;p&gt;\r\n		Right out of the box, you can have a video chat with friends or family,2 record a video at your desk, or take fun pictures with Photo Booth&lt;/p&gt;\r\n&lt;/div&gt;\r\n','','MacBook','',''),
@@ -2249,14 +2293,14 @@ CREATE TABLE `oc_product_discount` (
   `date_end` date NOT NULL DEFAULT '0000-00-00',
   PRIMARY KEY (`product_discount_id`),
   KEY `product_id` (`product_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=441 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=444 DEFAULT CHARSET=utf8;
 
 /*Data for the table `oc_product_discount` */
 
 insert  into `oc_product_discount`(`product_discount_id`,`product_id`,`customer_group_id`,`quantity`,`priority`,`price`,`date_start`,`date_end`) values 
-(440,42,1,30,1,66.0000,'0000-00-00','0000-00-00'),
-(439,42,1,20,1,77.0000,'0000-00-00','0000-00-00'),
-(438,42,1,10,1,88.0000,'0000-00-00','0000-00-00');
+(443,42,1,30,1,66.0000,'0000-00-00','0000-00-00'),
+(442,42,1,20,1,77.0000,'0000-00-00','0000-00-00'),
+(441,42,1,10,1,88.0000,'0000-00-00','0000-00-00');
 
 /*Table structure for table `oc_product_filter` */
 
@@ -2270,6 +2314,22 @@ CREATE TABLE `oc_product_filter` (
 
 /*Data for the table `oc_product_filter` */
 
+insert  into `oc_product_filter`(`product_id`,`filter_id`) values 
+(28,1),
+(28,3),
+(28,5),
+(28,6),
+(30,3),
+(30,5),
+(40,2),
+(40,5),
+(41,2),
+(41,5),
+(42,1),
+(42,5),
+(47,3),
+(47,5);
+
 /*Table structure for table `oc_product_image` */
 
 DROP TABLE IF EXISTS `oc_product_image`;
@@ -2281,16 +2341,16 @@ CREATE TABLE `oc_product_image` (
   `sort_order` int(3) NOT NULL DEFAULT 0,
   PRIMARY KEY (`product_image_id`),
   KEY `product_id` (`product_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2352 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2370 DEFAULT CHARSET=utf8;
 
 /*Data for the table `oc_product_image` */
 
 insert  into `oc_product_image`(`product_image_id`,`product_id`,`image`,`sort_order`) values 
-(2345,30,'catalog/demo/canon_eos_5d_2.jpg',0),
-(2321,47,'catalog/demo/hp_3.jpg',0),
-(2035,28,'catalog/demo/htc_touch_hd_2.jpg',0),
-(2351,41,'catalog/demo/imac_3.jpg',0),
-(1982,40,'catalog/demo/iphone_6.jpg',0),
+(2358,30,'catalog/demo/canon_eos_5d_3.jpg',0),
+(2360,47,'catalog/demo/hp_2.jpg',0),
+(2362,28,'catalog/demo/htc_touch_hd_3.jpg',0),
+(2364,41,'catalog/demo/imac_2.jpg',0),
+(2369,40,'catalog/demo/iphone_4.jpg',0),
 (2001,36,'catalog/demo/ipod_nano_5.jpg',0),
 (2000,36,'catalog/demo/ipod_nano_4.jpg',0),
 (2005,34,'catalog/demo/ipod_shuffle_5.jpg',0),
@@ -2311,14 +2371,14 @@ insert  into `oc_product_image`(`product_image_id`,`product_id`,`image`,`sort_or
 (1994,46,'catalog/demo/sony_vaio_4.jpg',0),
 (1991,48,'catalog/demo/ipod_classic_4.jpg',0),
 (1990,48,'catalog/demo/ipod_classic_3.jpg',0),
-(1981,40,'catalog/demo/iphone_2.jpg',0),
-(1980,40,'catalog/demo/iphone_5.jpg',0),
-(2344,30,'catalog/demo/canon_eos_5d_3.jpg',0),
-(2320,47,'catalog/demo/hp_2.jpg',0),
-(2034,28,'catalog/demo/htc_touch_hd_3.jpg',0),
-(2350,41,'catalog/demo/imac_2.jpg',0),
-(1979,40,'catalog/demo/iphone_3.jpg',0),
-(1978,40,'catalog/demo/iphone_4.jpg',0),
+(2368,40,'catalog/demo/iphone_3.jpg',0),
+(2367,40,'catalog/demo/iphone_5.jpg',0),
+(2357,30,'catalog/demo/canon_eos_5d_2.jpg',0),
+(2359,47,'catalog/demo/hp_3.jpg',0),
+(2361,28,'catalog/demo/htc_touch_hd_2.jpg',0),
+(2363,41,'catalog/demo/imac_3.jpg',0),
+(2366,40,'catalog/demo/iphone_2.jpg',0),
+(2365,40,'catalog/demo/iphone_6.jpg',0),
 (1989,48,'catalog/demo/ipod_classic_2.jpg',0),
 (1999,36,'catalog/demo/ipod_nano_2.jpg',0),
 (1998,36,'catalog/demo/ipod_nano_3.jpg',0),
@@ -2342,11 +2402,11 @@ insert  into `oc_product_image`(`product_image_id`,`product_id`,`image`,`sort_or
 (2324,49,'catalog/demo/samsung_tab_4.jpg',0),
 (2323,49,'catalog/demo/samsung_tab_3.jpg',0),
 (2322,49,'catalog/demo/samsung_tab_2.jpg',0),
-(2317,42,'catalog/demo/canon_logo.jpg',0),
-(2316,42,'catalog/demo/hp_1.jpg',0),
-(2315,42,'catalog/demo/compaq_presario.jpg',0),
-(2314,42,'catalog/demo/canon_eos_5d_1.jpg',0),
-(2313,42,'catalog/demo/canon_eos_5d_2.jpg',0);
+(2355,42,'catalog/demo/canon_eos_5d_1.jpg',0),
+(2354,42,'catalog/demo/compaq_presario.jpg',0),
+(2353,42,'catalog/demo/hp_1.jpg',0),
+(2352,42,'catalog/demo/canon_logo.jpg',0),
+(2356,42,'catalog/demo/canon_eos_5d_2.jpg',0);
 
 /*Table structure for table `oc_product_option` */
 
@@ -2366,16 +2426,16 @@ CREATE TABLE `oc_product_option` (
 insert  into `oc_product_option`(`product_option_id`,`product_id`,`option_id`,`value`,`required`) values 
 (224,35,11,'',1),
 (225,47,12,'2011-04-22',1),
-(223,42,2,'',1),
-(217,42,5,'',1),
-(209,42,6,'',1),
-(218,42,1,'',1),
-(208,42,4,'test',1),
 (219,42,8,'2011-02-20',1),
 (222,42,7,'',1),
+(209,42,6,'',1),
+(217,42,5,'',1),
+(208,42,4,'test',1),
+(223,42,2,'',1),
+(218,42,1,'',1),
+(226,30,5,'',1),
 (221,42,9,'22:25',1),
-(220,42,10,'2011-02-20 22:25',1),
-(226,30,5,'',1);
+(220,42,10,'2011-02-20 22:25',1);
 
 /*Table structure for table `oc_product_option_value` */
 
@@ -2401,22 +2461,22 @@ CREATE TABLE `oc_product_option_value` (
 /*Data for the table `oc_product_option_value` */
 
 insert  into `oc_product_option_value`(`product_option_value_id`,`product_option_id`,`product_id`,`option_id`,`option_value_id`,`quantity`,`subtract`,`price`,`price_prefix`,`points`,`points_prefix`,`weight`,`weight_prefix`) values 
-(1,217,42,5,41,100,0,1.0000,'+',0,'+',1.00000000,'+'),
-(6,218,42,1,31,146,1,20.0000,'+',2,'-',20.00000000,'+'),
-(7,218,42,1,43,300,1,30.0000,'+',3,'+',30.00000000,'+'),
-(5,218,42,1,32,96,1,10.0000,'+',1,'+',10.00000000,'+'),
 (4,217,42,5,39,92,1,4.0000,'+',0,'+',4.00000000,'+'),
-(2,217,42,5,42,200,1,2.0000,'+',0,'+',2.00000000,'+'),
-(3,217,42,5,40,300,0,3.0000,'+',0,'+',3.00000000,'+'),
-(8,223,42,2,23,48,1,10.0000,'+',0,'+',10.00000000,'+'),
+(11,223,42,2,45,3998,1,40.0000,'+',0,'+',40.00000000,'+'),
 (10,223,42,2,44,2696,1,30.0000,'+',0,'+',30.00000000,'+'),
 (9,223,42,2,24,194,1,20.0000,'+',0,'+',20.00000000,'+'),
-(11,223,42,2,45,3998,1,40.0000,'+',0,'+',40.00000000,'+'),
+(8,223,42,2,23,48,1,10.0000,'+',0,'+',10.00000000,'+'),
+(7,218,42,1,43,300,1,30.0000,'+',3,'+',30.00000000,'+'),
+(6,218,42,1,31,146,1,20.0000,'+',2,'-',20.00000000,'+'),
+(5,218,42,1,32,96,1,10.0000,'+',1,'+',10.00000000,'+'),
 (12,224,35,11,46,0,1,5.0000,'+',0,'+',0.00000000,'+'),
 (13,224,35,11,47,10,1,10.0000,'+',0,'+',0.00000000,'+'),
 (14,224,35,11,48,15,1,15.0000,'+',0,'+',0.00000000,'+'),
 (16,226,30,5,40,5,1,0.0000,'+',0,'+',0.00000000,'+'),
-(15,226,30,5,39,2,1,0.0000,'+',0,'+',0.00000000,'+');
+(15,226,30,5,39,2,1,0.0000,'+',0,'+',0.00000000,'+'),
+(3,217,42,5,40,300,0,3.0000,'+',0,'+',3.00000000,'+'),
+(1,217,42,5,41,100,0,1.0000,'+',0,'+',1.00000000,'+'),
+(2,217,42,5,42,200,1,2.0000,'+',0,'+',2.00000000,'+');
 
 /*Table structure for table `oc_product_recurring` */
 
@@ -2459,26 +2519,24 @@ CREATE TABLE `oc_product_reward` (
   `customer_group_id` int(11) NOT NULL DEFAULT 0,
   `points` int(8) NOT NULL DEFAULT 0,
   PRIMARY KEY (`product_reward_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=546 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=550 DEFAULT CHARSET=utf8;
 
 /*Data for the table `oc_product_reward` */
 
 insert  into `oc_product_reward`(`product_reward_id`,`product_id`,`customer_group_id`,`points`) values 
-(515,42,1,100),
-(519,47,1,300),
-(379,28,1,400),
+(546,42,1,100),
+(548,47,1,300),
+(549,28,1,400),
 (329,43,1,600),
 (339,29,1,0),
 (343,48,1,0),
-(335,40,1,0),
-(539,30,1,200),
+(547,30,1,200),
 (331,44,1,700),
 (333,45,1,800),
 (337,31,1,0),
 (425,35,1,0),
 (345,33,1,0),
 (347,46,1,0),
-(545,41,1,0),
 (351,36,1,0),
 (353,34,1,0),
 (355,32,1,0),
@@ -2498,14 +2556,14 @@ CREATE TABLE `oc_product_special` (
   `date_end` date NOT NULL DEFAULT '0000-00-00',
   PRIMARY KEY (`product_special_id`),
   KEY `product_id` (`product_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=440 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=443 DEFAULT CHARSET=utf8;
 
 /*Data for the table `oc_product_special` */
 
 insert  into `oc_product_special`(`product_special_id`,`product_id`,`customer_group_id`,`priority`,`price`,`date_start`,`date_end`) values 
-(419,42,1,1,90.0000,'0000-00-00','0000-00-00'),
-(439,30,1,2,90.0000,'0000-00-00','0000-00-00'),
-(438,30,1,1,80.0000,'0000-00-00','0000-00-00');
+(440,42,1,1,90.0000,'0000-00-00','0000-00-00'),
+(442,30,1,2,90.0000,'0000-00-00','0000-00-00'),
+(441,30,1,1,80.0000,'0000-00-00','0000-00-00');
 
 /*Table structure for table `oc_product_to_category` */
 
@@ -2525,7 +2583,6 @@ insert  into `oc_product_to_category`(`product_id`,`category_id`) values
 (28,24),
 (29,20),
 (29,24),
-(30,20),
 (30,33),
 (31,33),
 (33,20),
@@ -2570,6 +2627,14 @@ CREATE TABLE `oc_product_to_layout` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 /*Data for the table `oc_product_to_layout` */
+
+insert  into `oc_product_to_layout`(`product_id`,`store_id`,`layout_id`) values 
+(42,0,0),
+(30,0,0),
+(47,0,0),
+(28,0,0),
+(41,0,0),
+(40,0,0);
 
 /*Table structure for table `oc_product_to_store` */
 
@@ -2773,7 +2838,7 @@ CREATE TABLE `oc_seo_url` (
   PRIMARY KEY (`seo_url_id`),
   KEY `query` (`query`),
   KEY `keyword` (`keyword`)
-) ENGINE=MyISAM AUTO_INCREMENT=849 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=856 DEFAULT CHARSET=utf8;
 
 /*Data for the table `oc_seo_url` */
 
@@ -2781,17 +2846,17 @@ insert  into `oc_seo_url`(`seo_url_id`,`store_id`,`language_id`,`query`,`keyword
 (824,0,1,'product_id=48','ipod-classic'),
 (836,0,1,'category_id=20','desktops'),
 (848,0,1,'category_id=26','pc'),
-(846,0,1,'category_id=27','mac'),
+(852,0,1,'category_id=27','mac'),
 (730,0,1,'manufacturer_id=8','apple'),
 (772,0,1,'information_id=4','about_us'),
-(768,0,1,'product_id=42','test'),
+(849,0,1,'product_id=42','test'),
 (845,0,1,'category_id=18','laptop-notebook'),
 (785,0,1,'category_id=57','tablet'),
 (844,0,1,'category_id=24','smartphone'),
 (788,0,1,'category_id=33','camera'),
-(809,0,1,'product_id=30','canon-eos-5d'),
-(840,0,1,'product_id=47','hp-lp3065'),
-(811,0,1,'product_id=28','htc-touch-hd'),
+(850,0,1,'product_id=30','canon-eos-5d'),
+(851,0,1,'product_id=47','hp-lp3065'),
+(853,0,1,'product_id=28','htc-touch-hd'),
 (812,0,1,'product_id=43','macbook'),
 (813,0,1,'product_id=44','macbook-air'),
 (814,0,1,'product_id=45','macbook-pro'),
@@ -2801,8 +2866,8 @@ insert  into `oc_seo_url`(`seo_url_id`,`store_id`,`language_id`,`query`,`keyword
 (819,0,1,'product_id=49','samsung-galaxy-tab-10-1'),
 (820,0,1,'product_id=33','samsung-syncmaster-941bw'),
 (821,0,1,'product_id=46','sony-vaio'),
-(837,0,1,'product_id=41','imac'),
-(823,0,1,'product_id=40','iphone'),
+(854,0,1,'product_id=41','imac'),
+(855,0,1,'product_id=40','iphone'),
 (825,0,1,'product_id=36','ipod-nano'),
 (826,0,1,'product_id=34','ipod-shuffle'),
 (827,0,1,'product_id=32','ipod-touch'),
@@ -2829,7 +2894,7 @@ CREATE TABLE `oc_session` (
 /*Data for the table `oc_session` */
 
 insert  into `oc_session`(`session_id`,`data`,`expire`) values 
-('1f39847c53aa6aaad94a2dd6a5','{\"user_id\":\"1\",\"user_token\":\"WaPTBBjx2Rfev0GBwfXV4Xm4TRN1EEV7\",\"language\":\"en-gb\",\"currency\":\"EUR\"}','2021-10-15 05:51:30');
+('1f39847c53aa6aaad94a2dd6a5','{\"user_id\":\"1\",\"user_token\":\"WaPTBBjx2Rfev0GBwfXV4Xm4TRN1EEV7\",\"language\":\"en-gb\",\"currency\":\"EUR\"}','2021-10-15 08:48:50');
 
 /*Table structure for table `oc_setting` */
 
@@ -2843,76 +2908,53 @@ CREATE TABLE `oc_setting` (
   `value` text NOT NULL,
   `serialized` tinyint(1) NOT NULL,
   PRIMARY KEY (`setting_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=292 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=385 DEFAULT CHARSET=utf8;
 
 /*Data for the table `oc_setting` */
 
 insert  into `oc_setting`(`setting_id`,`store_id`,`code`,`key`,`value`,`serialized`) values 
-(281,0,'config','config_compression','0',0),
-(282,0,'config','config_secure','0',0),
-(283,0,'config','config_password','1',0),
-(284,0,'config','config_shared','0',0),
-(285,0,'config','config_encryption','3A5FEgXbj7BJIvvWkKqxkKoVUdRkz8zLFrCUT3QTX56DbHywm6FVUZIG5VrgfmbtpbIntd9nxViANFBrV0Rt2cLHpSp6QOeMaITqpfpvqENcNweQIY69cYCxBGttfHzFRrIJ7bsftZwtZLBdgRJC8JIA48bAUe1s3vpdMrDJ9byegRUbrzLFCIp66C5rrD4Qso4gVLSgCy2I2Nk1dI4fPuISlBX9bV8F66yheKqOgBsyfy1Mgi7NDfp9luhLBHHoiOXYUPIb2Mvdpq0Oos2eHP0A2oF619lJNHHG7Uo7BwlD0u0GFXPLYLnwi4ep1iEkvkx0icFt9V7IuTXGiGaMfKCNwxC5IpargfIa753E8JLp9dgPAIRq8djJqlPaeXNQAxTISbE6WmM3OTeMLNbjGnsZgXrxteB0CT9XWU34dfyFLSPp087Yag5hJu896h9YDJnV5F9QyCumQopKH4ejQI8xhu0C5jMdXMs44ESTvEN7xPADxiojZpSC3dgrzVf9UpZiMbH3S9l3ZXnFUnJ8txKogH8TZUvy9kP0wusdn6ymGPTaq1I3oD3qpUvZ27b1u4CZVC4LJTYL8VHn7tvD48JFpoRwd7s7bqTTzl8Tfj8VkyRwzH1svtAFf01kfLPtCFr2LhbbEdYH6WhjWOJVtMK5ubOCtNJf9xcT1YE2aQZq1HVhYhI0ZfakhcW4hQTlU8h9L8GHObkeKkwnGEOcfKKfdxkkCx01kZL4QLGW1OyXWuV2rxV4Xtp9FnDnB7DcDmKhuoDz28IDQadKNziIYV5VrrK5ME2qLGjl1tEB1HeUPtptjvZr55GnkDQ7t2zzCHRJvtKI5F50nQGM64l6cTZ4fCIwbQ4eHuNQb5XSj1aWXI7qSZQ40OxE4vxqNP6NvdMFbSR3sW5BhZEAj25PYzz1txjG6sgIOvissL0ivBB8J8r7V5U3x53RzD1es9STSJWEe8lCgcnv25oLVYbb62FXEd0LHf7NTxveUKCUy7RRHypIuknUsvU8DsUWoSQr',0),
-(280,0,'config','config_robots','abot\r\ndbot\r\nebot\r\nhbot\r\nkbot\r\nlbot\r\nmbot\r\nnbot\r\nobot\r\npbot\r\nrbot\r\nsbot\r\ntbot\r\nvbot\r\nybot\r\nzbot\r\nbot.\r\nbot/\r\n_bot\r\n.bot\r\n/bot\r\n-bot\r\n:bot\r\n(bot\r\ncrawl\r\nslurp\r\nspider\r\nseek\r\naccoona\r\nacoon\r\nadressendeutschland\r\nah-ha.com\r\nahoy\r\naltavista\r\nananzi\r\nanthill\r\nappie\r\narachnophilia\r\narale\r\naraneo\r\naranha\r\narchitext\r\naretha\r\narks\r\nasterias\r\natlocal\r\natn\r\natomz\r\naugurfind\r\nbackrub\r\nbannana_bot\r\nbaypup\r\nbdfetch\r\nbig brother\r\nbiglotron\r\nbjaaland\r\nblackwidow\r\nblaiz\r\nblog\r\nblo.\r\nbloodhound\r\nboitho\r\nbooch\r\nbradley\r\nbutterfly\r\ncalif\r\ncassandra\r\nccubee\r\ncfetch\r\ncharlotte\r\nchurl\r\ncienciaficcion\r\ncmc\r\ncollective\r\ncomagent\r\ncombine\r\ncomputingsite\r\ncsci\r\ncurl\r\ncusco\r\ndaumoa\r\ndeepindex\r\ndelorie\r\ndepspid\r\ndeweb\r\ndie blinde kuh\r\ndigger\r\nditto\r\ndmoz\r\ndocomo\r\ndownload express\r\ndtaagent\r\ndwcp\r\nebiness\r\nebingbong\r\ne-collector\r\nejupiter\r\nemacs-w3 search engine\r\nesther\r\nevliya celebi\r\nezresult\r\nfalcon\r\nfelix ide\r\nferret\r\nfetchrover\r\nfido\r\nfindlinks\r\nfireball\r\nfish search\r\nfouineur\r\nfunnelweb\r\ngazz\r\ngcreep\r\ngenieknows\r\ngetterroboplus\r\ngeturl\r\nglx\r\ngoforit\r\ngolem\r\ngrabber\r\ngrapnel\r\ngralon\r\ngriffon\r\ngromit\r\ngrub\r\ngulliver\r\nhamahakki\r\nharvest\r\nhavindex\r\nhelix\r\nheritrix\r\nhku www octopus\r\nhomerweb\r\nhtdig\r\nhtml index\r\nhtml_analyzer\r\nhtmlgobble\r\nhubater\r\nhyper-decontextualizer\r\nia_archiver\r\nibm_planetwide\r\nichiro\r\niconsurf\r\niltrovatore\r\nimage.kapsi.net\r\nimagelock\r\nincywincy\r\nindexer\r\ninfobee\r\ninformant\r\ningrid\r\ninktomisearch.com\r\ninspector web\r\nintelliagent\r\ninternet shinchakubin\r\nip3000\r\niron33\r\nisraeli-search\r\nivia\r\njack\r\njakarta\r\njavabee\r\njetbot\r\njumpstation\r\nkatipo\r\nkdd-explorer\r\nkilroy\r\nknowledge\r\nkototoi\r\nkretrieve\r\nlabelgrabber\r\nlachesis\r\nlarbin\r\nlegs\r\nlibwww\r\nlinkalarm\r\nlink validator\r\nlinkscan\r\nlockon\r\nlwp\r\nlycos\r\nmagpie\r\nmantraagent\r\nmapoftheinternet\r\nmarvin/\r\nmattie\r\nmediafox\r\nmediapartners\r\nmercator\r\nmerzscope\r\nmicrosoft url control\r\nminirank\r\nmiva\r\nmj12\r\nmnogosearch\r\nmoget\r\nmonster\r\nmoose\r\nmotor\r\nmultitext\r\nmuncher\r\nmuscatferret\r\nmwd.search\r\nmyweb\r\nnajdi\r\nnameprotect\r\nnationaldirectory\r\nnazilla\r\nncsa beta\r\nnec-meshexplorer\r\nnederland.zoek\r\nnetcarta webmap engine\r\nnetmechanic\r\nnetresearchserver\r\nnetscoop\r\nnewscan-online\r\nnhse\r\nnokia6682/\r\nnomad\r\nnoyona\r\nnutch\r\nnzexplorer\r\nobjectssearch\r\noccam\r\nomni\r\nopen text\r\nopenfind\r\nopenintelligencedata\r\norb search\r\nosis-project\r\npack rat\r\npageboy\r\npagebull\r\npage_verifier\r\npanscient\r\nparasite\r\npartnersite\r\npatric\r\npear.\r\npegasus\r\nperegrinator\r\npgp key agent\r\nphantom\r\nphpdig\r\npicosearch\r\npiltdownman\r\npimptrain\r\npinpoint\r\npioneer\r\npiranha\r\nplumtreewebaccessor\r\npogodak\r\npoirot\r\npompos\r\npoppelsdorf\r\npoppi\r\npopular iconoclast\r\npsycheclone\r\npublisher\r\npython\r\nrambler\r\nraven search\r\nroach\r\nroad runner\r\nroadhouse\r\nrobbie\r\nrobofox\r\nrobozilla\r\nrules\r\nsalty\r\nsbider\r\nscooter\r\nscoutjet\r\nscrubby\r\nsearch.\r\nsearchprocess\r\nsemanticdiscovery\r\nsenrigan\r\nsg-scout\r\nshai\'hulud\r\nshark\r\nshopwiki\r\nsidewinder\r\nsift\r\nsilk\r\nsimmany\r\nsite searcher\r\nsite valet\r\nsitetech-rover\r\nskymob.com\r\nsleek\r\nsmartwit\r\nsna-\r\nsnappy\r\nsnooper\r\nsohu\r\nspeedfind\r\nsphere\r\nsphider\r\nspinner\r\nspyder\r\nsteeler/\r\nsuke\r\nsuntek\r\nsupersnooper\r\nsurfnomore\r\nsven\r\nsygol\r\nszukacz\r\ntach black widow\r\ntarantula\r\ntempleton\r\n/teoma\r\nt-h-u-n-d-e-r-s-t-o-n-e\r\ntheophrastus\r\ntitan\r\ntitin\r\ntkwww\r\ntoutatis\r\nt-rex\r\ntutorgig\r\ntwiceler\r\ntwisted\r\nucsd\r\nudmsearch\r\nurl check\r\nupdated\r\nvagabondo\r\nvalkyrie\r\nverticrawl\r\nvictoria\r\nvision-search\r\nvolcano\r\nvoyager/\r\nvoyager-hc\r\nw3c_validator\r\nw3m2\r\nw3mir\r\nwalker\r\nwallpaper\r\nwanderer\r\nwauuu\r\nwavefire\r\nweb core\r\nweb hopper\r\nweb wombat\r\nwebbandit\r\nwebcatcher\r\nwebcopy\r\nwebfoot\r\nweblayers\r\nweblinker\r\nweblog monitor\r\nwebmirror\r\nwebmonkey\r\nwebquest\r\nwebreaper\r\nwebsitepulse\r\nwebsnarf\r\nwebstolperer\r\nwebvac\r\nwebwalk\r\nwebwatch\r\nwebwombat\r\nwebzinger\r\nwhizbang\r\nwhowhere\r\nwild ferret\r\nworldlight\r\nwwwc\r\nwwwster\r\nxenu\r\nxget\r\nxift\r\nxirq\r\nyandex\r\nyanga\r\nyeti\r\nyodao\r\nzao\r\nzippp\r\nzyborg',0),
-(279,0,'config','config_seo_url','0',0),
-(278,0,'config','config_maintenance','0',0),
-(277,0,'config','config_mail_alert_email','',0),
-(276,0,'config','config_mail_alert','[\"order\"]',1),
-(275,0,'config','config_mail_smtp_timeout','5',0),
-(274,0,'config','config_mail_smtp_port','25',0),
-(273,0,'config','config_mail_smtp_password','',0),
-(272,0,'config','config_mail_smtp_username','',0),
-(271,0,'config','config_mail_smtp_hostname','',0),
-(270,0,'config','config_mail_parameter','',0),
-(269,0,'config','config_mail_engine','mail',0),
-(268,0,'config','config_icon','catalog/cart.png',0),
-(267,0,'config','config_logo','catalog/opencart-logo.png',0),
-(266,0,'config','config_captcha_page','[\"review\",\"return\",\"contact\"]',1),
-(265,0,'config','config_captcha','',0),
-(264,0,'config','config_return_status_id','2',0),
-(263,0,'config','config_return_id','0',0),
-(262,0,'config','config_affiliate_id','4',0),
-(261,0,'config','config_affiliate_commission','5',0),
-(260,0,'config','config_affiliate_auto','0',0),
-(259,0,'config','config_affiliate_approval','0',0),
-(258,0,'config','config_affiliate_group_id','1',0),
-(257,0,'config','config_stock_checkout','0',0),
-(256,0,'config','config_stock_warning','0',0),
-(255,0,'config','config_stock_display','0',0),
-(254,0,'config','config_api_id','1',0),
-(253,0,'config','config_fraud_status_id','7',0),
-(252,0,'config','config_complete_status','[\"5\",\"3\"]',1),
-(251,0,'config','config_processing_status','[\"5\",\"1\",\"2\",\"12\",\"3\"]',1),
-(250,0,'config','config_order_status_id','1',0),
-(249,0,'config','config_checkout_id','5',0),
-(248,0,'config','config_checkout_guest','1',0),
-(245,0,'config','config_account_id','3',0),
-(246,0,'config','config_invoice_prefix','INV-2021-00',0),
-(247,0,'config','config_cart_weight','1',0),
-(235,0,'config','config_tax','1',0),
-(236,0,'config','config_tax_default','shipping',0),
-(237,0,'config','config_tax_customer','shipping',0),
-(238,0,'config','config_customer_online','0',0),
-(239,0,'config','config_customer_activity','0',0),
-(240,0,'config','config_customer_search','0',0),
-(241,0,'config','config_customer_group_id','1',0),
-(242,0,'config','config_customer_group_display','[\"1\"]',1),
-(243,0,'config','config_customer_price','0',0),
-(244,0,'config','config_login_attempts','5',0),
-(234,0,'config','config_voucher_max','1000',0),
-(217,0,'config','config_image','',0),
-(216,0,'config','config_fax','',0),
-(215,0,'config','config_telephone','0541 – 355919',0),
-(214,0,'config','config_email','info@bizzsite.nl',0),
-(213,0,'config','config_geocode','',0),
-(212,0,'config','config_address','De Mors 33\r\n\r\n7631 AH Ootmarsum',0),
-(211,0,'config','config_owner','Your Name',0),
-(210,0,'config','config_name','Your Store',0),
-(209,0,'config','config_layout_id','4',0),
-(208,0,'config','config_theme','default',0),
-(207,0,'config','config_meta_keyword','',0),
-(206,0,'config','config_meta_description','My Store',0),
-(205,0,'config','config_meta_title','Your Store',0),
+(374,0,'config','config_compression','0',0),
+(375,0,'config','config_secure','0',0),
+(376,0,'config','config_password','1',0),
+(377,0,'config','config_shared','0',0),
+(378,0,'config','config_encryption','3A5FEgXbj7BJIvvWkKqxkKoVUdRkz8zLFrCUT3QTX56DbHywm6FVUZIG5VrgfmbtpbIntd9nxViANFBrV0Rt2cLHpSp6QOeMaITqpfpvqENcNweQIY69cYCxBGttfHzFRrIJ7bsftZwtZLBdgRJC8JIA48bAUe1s3vpdMrDJ9byegRUbrzLFCIp66C5rrD4Qso4gVLSgCy2I2Nk1dI4fPuISlBX9bV8F66yheKqOgBsyfy1Mgi7NDfp9luhLBHHoiOXYUPIb2Mvdpq0Oos2eHP0A2oF619lJNHHG7Uo7BwlD0u0GFXPLYLnwi4ep1iEkvkx0icFt9V7IuTXGiGaMfKCNwxC5IpargfIa753E8JLp9dgPAIRq8djJqlPaeXNQAxTISbE6WmM3OTeMLNbjGnsZgXrxteB0CT9XWU34dfyFLSPp087Yag5hJu896h9YDJnV5F9QyCumQopKH4ejQI8xhu0C5jMdXMs44ESTvEN7xPADxiojZpSC3dgrzVf9UpZiMbH3S9l3ZXnFUnJ8txKogH8TZUvy9kP0wusdn6ymGPTaq1I3oD3qpUvZ27b1u4CZVC4LJTYL8VHn7tvD48JFpoRwd7s7bqTTzl8Tfj8VkyRwzH1svtAFf01kfLPtCFr2LhbbEdYH6WhjWOJVtMK5ubOCtNJf9xcT1YE2aQZq1HVhYhI0ZfakhcW4hQTlU8h9L8GHObkeKkwnGEOcfKKfdxkkCx01kZL4QLGW1OyXWuV2rxV4Xtp9FnDnB7DcDmKhuoDz28IDQadKNziIYV5VrrK5ME2qLGjl1tEB1HeUPtptjvZr55GnkDQ7t2zzCHRJvtKI5F50nQGM64l6cTZ4fCIwbQ4eHuNQb5XSj1aWXI7qSZQ40OxE4vxqNP6NvdMFbSR3sW5BhZEAj25PYzz1txjG6sgIOvissL0ivBB8J8r7V5U3x53RzD1es9STSJWEe8lCgcnv25oLVYbb62FXEd0LHf7NTxveUKCUy7RRHypIuknUsvU8DsUWoSQr',0),
+(379,0,'config','config_file_max_size','300000',0),
+(380,0,'config','config_file_ext_allowed','zip\r\ntxt\r\npng\r\njpe\r\njpeg\r\njpg\r\ngif\r\nbmp\r\nico\r\ntiff\r\ntif\r\nsvg\r\nsvgz\r\nzip\r\nrar\r\nmsi\r\ncab\r\nmp3\r\nqt\r\nmov\r\npdf\r\npsd\r\nai\r\neps\r\nps\r\ndoc',0),
+(381,0,'config','config_file_mime_allowed','text/plain\r\nimage/png\r\nimage/jpeg\r\nimage/gif\r\nimage/bmp\r\nimage/tiff\r\nimage/svg+xml\r\napplication/zip\r\n&quot;application/zip&quot;\r\napplication/x-zip\r\n&quot;application/x-zip&quot;\r\napplication/x-zip-compressed\r\n&quot;application/x-zip-compressed&quot;\r\napplication/rar\r\n&quot;application/rar&quot;\r\napplication/x-rar\r\n&quot;application/x-rar&quot;\r\napplication/x-rar-compressed\r\n&quot;application/x-rar-compressed&quot;\r\napplication/octet-stream\r\n&quot;application/octet-stream&quot;\r\naudio/mpeg\r\nvideo/quicktime\r\napplication/pdf',0),
+(373,0,'config','config_robots','abot\r\ndbot\r\nebot\r\nhbot\r\nkbot\r\nlbot\r\nmbot\r\nnbot\r\nobot\r\npbot\r\nrbot\r\nsbot\r\ntbot\r\nvbot\r\nybot\r\nzbot\r\nbot.\r\nbot/\r\n_bot\r\n.bot\r\n/bot\r\n-bot\r\n:bot\r\n(bot\r\ncrawl\r\nslurp\r\nspider\r\nseek\r\naccoona\r\nacoon\r\nadressendeutschland\r\nah-ha.com\r\nahoy\r\naltavista\r\nananzi\r\nanthill\r\nappie\r\narachnophilia\r\narale\r\naraneo\r\naranha\r\narchitext\r\naretha\r\narks\r\nasterias\r\natlocal\r\natn\r\natomz\r\naugurfind\r\nbackrub\r\nbannana_bot\r\nbaypup\r\nbdfetch\r\nbig brother\r\nbiglotron\r\nbjaaland\r\nblackwidow\r\nblaiz\r\nblog\r\nblo.\r\nbloodhound\r\nboitho\r\nbooch\r\nbradley\r\nbutterfly\r\ncalif\r\ncassandra\r\nccubee\r\ncfetch\r\ncharlotte\r\nchurl\r\ncienciaficcion\r\ncmc\r\ncollective\r\ncomagent\r\ncombine\r\ncomputingsite\r\ncsci\r\ncurl\r\ncusco\r\ndaumoa\r\ndeepindex\r\ndelorie\r\ndepspid\r\ndeweb\r\ndie blinde kuh\r\ndigger\r\nditto\r\ndmoz\r\ndocomo\r\ndownload express\r\ndtaagent\r\ndwcp\r\nebiness\r\nebingbong\r\ne-collector\r\nejupiter\r\nemacs-w3 search engine\r\nesther\r\nevliya celebi\r\nezresult\r\nfalcon\r\nfelix ide\r\nferret\r\nfetchrover\r\nfido\r\nfindlinks\r\nfireball\r\nfish search\r\nfouineur\r\nfunnelweb\r\ngazz\r\ngcreep\r\ngenieknows\r\ngetterroboplus\r\ngeturl\r\nglx\r\ngoforit\r\ngolem\r\ngrabber\r\ngrapnel\r\ngralon\r\ngriffon\r\ngromit\r\ngrub\r\ngulliver\r\nhamahakki\r\nharvest\r\nhavindex\r\nhelix\r\nheritrix\r\nhku www octopus\r\nhomerweb\r\nhtdig\r\nhtml index\r\nhtml_analyzer\r\nhtmlgobble\r\nhubater\r\nhyper-decontextualizer\r\nia_archiver\r\nibm_planetwide\r\nichiro\r\niconsurf\r\niltrovatore\r\nimage.kapsi.net\r\nimagelock\r\nincywincy\r\nindexer\r\ninfobee\r\ninformant\r\ningrid\r\ninktomisearch.com\r\ninspector web\r\nintelliagent\r\ninternet shinchakubin\r\nip3000\r\niron33\r\nisraeli-search\r\nivia\r\njack\r\njakarta\r\njavabee\r\njetbot\r\njumpstation\r\nkatipo\r\nkdd-explorer\r\nkilroy\r\nknowledge\r\nkototoi\r\nkretrieve\r\nlabelgrabber\r\nlachesis\r\nlarbin\r\nlegs\r\nlibwww\r\nlinkalarm\r\nlink validator\r\nlinkscan\r\nlockon\r\nlwp\r\nlycos\r\nmagpie\r\nmantraagent\r\nmapoftheinternet\r\nmarvin/\r\nmattie\r\nmediafox\r\nmediapartners\r\nmercator\r\nmerzscope\r\nmicrosoft url control\r\nminirank\r\nmiva\r\nmj12\r\nmnogosearch\r\nmoget\r\nmonster\r\nmoose\r\nmotor\r\nmultitext\r\nmuncher\r\nmuscatferret\r\nmwd.search\r\nmyweb\r\nnajdi\r\nnameprotect\r\nnationaldirectory\r\nnazilla\r\nncsa beta\r\nnec-meshexplorer\r\nnederland.zoek\r\nnetcarta webmap engine\r\nnetmechanic\r\nnetresearchserver\r\nnetscoop\r\nnewscan-online\r\nnhse\r\nnokia6682/\r\nnomad\r\nnoyona\r\nnutch\r\nnzexplorer\r\nobjectssearch\r\noccam\r\nomni\r\nopen text\r\nopenfind\r\nopenintelligencedata\r\norb search\r\nosis-project\r\npack rat\r\npageboy\r\npagebull\r\npage_verifier\r\npanscient\r\nparasite\r\npartnersite\r\npatric\r\npear.\r\npegasus\r\nperegrinator\r\npgp key agent\r\nphantom\r\nphpdig\r\npicosearch\r\npiltdownman\r\npimptrain\r\npinpoint\r\npioneer\r\npiranha\r\nplumtreewebaccessor\r\npogodak\r\npoirot\r\npompos\r\npoppelsdorf\r\npoppi\r\npopular iconoclast\r\npsycheclone\r\npublisher\r\npython\r\nrambler\r\nraven search\r\nroach\r\nroad runner\r\nroadhouse\r\nrobbie\r\nrobofox\r\nrobozilla\r\nrules\r\nsalty\r\nsbider\r\nscooter\r\nscoutjet\r\nscrubby\r\nsearch.\r\nsearchprocess\r\nsemanticdiscovery\r\nsenrigan\r\nsg-scout\r\nshai\'hulud\r\nshark\r\nshopwiki\r\nsidewinder\r\nsift\r\nsilk\r\nsimmany\r\nsite searcher\r\nsite valet\r\nsitetech-rover\r\nskymob.com\r\nsleek\r\nsmartwit\r\nsna-\r\nsnappy\r\nsnooper\r\nsohu\r\nspeedfind\r\nsphere\r\nsphider\r\nspinner\r\nspyder\r\nsteeler/\r\nsuke\r\nsuntek\r\nsupersnooper\r\nsurfnomore\r\nsven\r\nsygol\r\nszukacz\r\ntach black widow\r\ntarantula\r\ntempleton\r\n/teoma\r\nt-h-u-n-d-e-r-s-t-o-n-e\r\ntheophrastus\r\ntitan\r\ntitin\r\ntkwww\r\ntoutatis\r\nt-rex\r\ntutorgig\r\ntwiceler\r\ntwisted\r\nucsd\r\nudmsearch\r\nurl check\r\nupdated\r\nvagabondo\r\nvalkyrie\r\nverticrawl\r\nvictoria\r\nvision-search\r\nvolcano\r\nvoyager/\r\nvoyager-hc\r\nw3c_validator\r\nw3m2\r\nw3mir\r\nwalker\r\nwallpaper\r\nwanderer\r\nwauuu\r\nwavefire\r\nweb core\r\nweb hopper\r\nweb wombat\r\nwebbandit\r\nwebcatcher\r\nwebcopy\r\nwebfoot\r\nweblayers\r\nweblinker\r\nweblog monitor\r\nwebmirror\r\nwebmonkey\r\nwebquest\r\nwebreaper\r\nwebsitepulse\r\nwebsnarf\r\nwebstolperer\r\nwebvac\r\nwebwalk\r\nwebwatch\r\nwebwombat\r\nwebzinger\r\nwhizbang\r\nwhowhere\r\nwild ferret\r\nworldlight\r\nwwwc\r\nwwwster\r\nxenu\r\nxget\r\nxift\r\nxirq\r\nyandex\r\nyanga\r\nyeti\r\nyodao\r\nzao\r\nzippp\r\nzyborg',0),
+(372,0,'config','config_seo_url','0',0),
+(371,0,'config','config_maintenance','0',0),
+(370,0,'config','config_mail_alert_email','',0),
+(369,0,'config','config_mail_alert','[\"order\"]',1),
+(367,0,'config','config_mail_smtp_port','25',0),
+(368,0,'config','config_mail_smtp_timeout','5',0),
+(366,0,'config','config_mail_smtp_password','',0),
+(365,0,'config','config_mail_smtp_username','',0),
+(364,0,'config','config_mail_smtp_hostname','',0),
+(363,0,'config','config_mail_parameter','',0),
+(362,0,'config','config_mail_engine','mail',0),
+(361,0,'config','config_icon','catalog/cart.png',0),
+(360,0,'config','config_logo','catalog/opencart-logo.png',0),
+(359,0,'config','config_captcha_page','[\"review\",\"return\",\"contact\"]',1),
+(358,0,'config','config_captcha','',0),
+(357,0,'config','config_return_status_id','2',0),
+(356,0,'config','config_return_id','0',0),
+(355,0,'config','config_affiliate_id','4',0),
+(354,0,'config','config_affiliate_commission','5',0),
+(353,0,'config','config_affiliate_auto','0',0),
+(352,0,'config','config_affiliate_approval','0',0),
+(351,0,'config','config_affiliate_group_id','1',0),
+(350,0,'config','config_stock_checkout','0',0),
+(349,0,'config','config_stock_warning','0',0),
+(348,0,'config','config_stock_display','0',0),
+(346,0,'config','config_fraud_status_id','7',0),
+(347,0,'config','config_api_id','1',0),
+(345,0,'config','config_complete_status','[\"5\",\"3\"]',1),
+(344,0,'config','config_processing_status','[\"5\",\"1\",\"2\",\"12\",\"3\"]',1),
+(343,0,'config','config_order_status_id','1',0),
+(342,0,'config','config_checkout_id','5',0),
+(340,0,'config','config_cart_weight','1',0),
+(341,0,'config','config_checkout_guest','1',0),
 (94,0,'payment_free_checkout','payment_free_checkout_status','1',0),
 (95,0,'payment_free_checkout','payment_free_checkout_order_status_id','1',0),
 (96,0,'payment_free_checkout','payment_free_checkout_sort_order','1',0),
@@ -3021,28 +3063,56 @@ insert  into `oc_setting`(`setting_id`,`store_id`,`code`,`key`,`value`,`serializ
 (199,0,'report_marketing','report_marketing_sort_order','12',0),
 (200,0,'developer','developer_theme','1',0),
 (201,0,'developer','developer_sass','1',0),
-(218,0,'config','config_open','Maandag     08.30 – 17.30 uur\r\nDinsdag       08.30 – 17.30 uur \r\nWoensdag    08.30 – 17.30 uur \r\nDonderdag   08.30 – 17.30 uur \r\nVrijdag         08.30 – 17.30 uur\r\n Zaterdag      09.00 – 15.00 uur',0),
-(219,0,'config','config_comment','',0),
-(220,0,'config','config_country_id','222',0),
-(221,0,'config','config_zone_id','3563',0),
-(222,0,'config','config_timezone','UTC',0),
-(223,0,'config','config_language','en-gb',0),
-(224,0,'config','config_admin_language','en-gb',0),
-(225,0,'config','config_currency','USD',0),
-(226,0,'config','config_currency_auto','1',0),
-(227,0,'config','config_length_class_id','1',0),
-(228,0,'config','config_weight_class_id','1',0),
-(229,0,'config','config_product_count','1',0),
-(230,0,'config','config_limit_admin','20',0),
-(231,0,'config','config_review_status','1',0),
-(232,0,'config','config_review_guest','1',0),
-(233,0,'config','config_voucher_min','1',0),
-(286,0,'config','config_file_max_size','300000',0),
-(287,0,'config','config_file_ext_allowed','zip\r\ntxt\r\npng\r\njpe\r\njpeg\r\njpg\r\ngif\r\nbmp\r\nico\r\ntiff\r\ntif\r\nsvg\r\nsvgz\r\nzip\r\nrar\r\nmsi\r\ncab\r\nmp3\r\nqt\r\nmov\r\npdf\r\npsd\r\nai\r\neps\r\nps\r\ndoc',0),
-(288,0,'config','config_file_mime_allowed','text/plain\r\nimage/png\r\nimage/jpeg\r\nimage/gif\r\nimage/bmp\r\nimage/tiff\r\nimage/svg+xml\r\napplication/zip\r\n&quot;application/zip&quot;\r\napplication/x-zip\r\n&quot;application/x-zip&quot;\r\napplication/x-zip-compressed\r\n&quot;application/x-zip-compressed&quot;\r\napplication/rar\r\n&quot;application/rar&quot;\r\napplication/x-rar\r\n&quot;application/x-rar&quot;\r\napplication/x-rar-compressed\r\n&quot;application/x-rar-compressed&quot;\r\napplication/octet-stream\r\n&quot;application/octet-stream&quot;\r\naudio/mpeg\r\nvideo/quicktime\r\napplication/pdf',0),
-(289,0,'config','config_error_display','1',0),
-(290,0,'config','config_error_log','1',0),
-(291,0,'config','config_error_filename','error.log',0);
+(336,0,'config','config_customer_price','0',0),
+(337,0,'config','config_login_attempts','5',0),
+(338,0,'config','config_account_id','3',0),
+(339,0,'config','config_invoice_prefix','INV-2021-00',0),
+(335,0,'config','config_customer_group_display','[\"1\"]',1),
+(334,0,'config','config_customer_group_id','1',0),
+(333,0,'config','config_customer_search','0',0),
+(332,0,'config','config_customer_activity','0',0),
+(331,0,'config','config_customer_online','0',0),
+(330,0,'config','config_tax_customer','shipping',0),
+(329,0,'config','config_tax_default','shipping',0),
+(328,0,'config','config_tax','1',0),
+(327,0,'config','config_voucher_max','1000',0),
+(326,0,'config','config_voucher_min','1',0),
+(325,0,'config','config_review_guest','1',0),
+(324,0,'config','config_review_status','1',0),
+(323,0,'config','config_limit_admin','20',0),
+(322,0,'config','config_product_count','1',0),
+(312,0,'config','config_comment','',0),
+(313,0,'config','config_country_id','150',0),
+(314,0,'config','config_zone_id','',0),
+(315,0,'config','config_timezone','Europe/Amsterdam',0),
+(316,0,'config','config_language','en-gb',0),
+(317,0,'config','config_admin_language','en-gb',0),
+(318,0,'config','config_currency','EUR',0),
+(319,0,'config','config_currency_auto','1',0),
+(320,0,'config','config_length_class_id','3',0),
+(321,0,'config','config_weight_class_id','1',0),
+(310,0,'config','config_image','',0),
+(311,0,'config','config_open','Maandag     08.30 – 17.30 uur\r\nDinsdag       08.30 – 17.30 uur \r\nWoensdag    08.30 – 17.30 uur \r\nDonderdag   08.30 – 17.30 uur \r\nVrijdag         08.30 – 17.30 uur\r\n Zaterdag      09.00 – 15.00 uur',0),
+(300,0,'config','config_meta_keyword','',0),
+(301,0,'config','config_theme','default',0),
+(302,0,'config','config_layout_id','4',0),
+(303,0,'config','config_name','Your Store',0),
+(304,0,'config','config_owner','Your Name',0),
+(305,0,'config','config_address','De Mors 33\r\n7631 AH Ootmarsum',0),
+(306,0,'config','config_geocode','52.412390, 6.903980',0),
+(307,0,'config','config_email','info@bizzsite.nl',0),
+(308,0,'config','config_telephone','0541 – 355919',0),
+(309,0,'config','config_fax','',0),
+(299,0,'config','config_meta_description','My Store',0),
+(298,0,'config','config_meta_title','Your Store',0),
+(297,0,'module_filter','module_filter_status','1',0),
+(293,0,'feed_google_sitemap','feed_google_sitemap_status','1',0),
+(294,0,'module_information','module_information_status','1',0),
+(295,0,'module_store','module_store_admin','1',0),
+(296,0,'module_store','module_store_status','1',0),
+(382,0,'config','config_error_display','1',0),
+(383,0,'config','config_error_log','1',0),
+(384,0,'config','config_error_filename','error.log',0);
 
 /*Table structure for table `oc_shipping_courier` */
 
@@ -3288,7 +3358,7 @@ CREATE TABLE `oc_user_group` (
 /*Data for the table `oc_user_group` */
 
 insert  into `oc_user_group`(`user_group_id`,`name`,`permission`) values 
-(1,'Administrator','{\"access\":[\"catalog\\/attribute\",\"catalog\\/attribute_group\",\"catalog\\/category\",\"catalog\\/download\",\"catalog\\/filter\",\"catalog\\/information\",\"catalog\\/manufacturer\",\"catalog\\/option\",\"catalog\\/product\",\"catalog\\/recurring\",\"catalog\\/review\",\"common\\/column_left\",\"common\\/developer\",\"common\\/filemanager\",\"common\\/profile\",\"common\\/security\",\"customer\\/custom_field\",\"customer\\/customer\",\"customer\\/customer_approval\",\"customer\\/customer_group\",\"design\\/banner\",\"design\\/layout\",\"design\\/theme\",\"design\\/translation\",\"design\\/seo_url\",\"event\\/statistics\",\"event\\/theme\",\"extension\\/advertise\\/google\",\"extension\\/analytics\\/google\",\"extension\\/captcha\\/basic\",\"extension\\/captcha\\/google\",\"extension\\/dashboard\\/activity\",\"extension\\/dashboard\\/chart\",\"extension\\/dashboard\\/customer\",\"extension\\/dashboard\\/map\",\"extension\\/dashboard\\/online\",\"extension\\/dashboard\\/order\",\"extension\\/dashboard\\/recent\",\"extension\\/dashboard\\/sale\",\"extension\\/extension\\/advertise\",\"extension\\/extension\\/analytics\",\"extension\\/extension\\/captcha\",\"extension\\/extension\\/dashboard\",\"extension\\/extension\\/feed\",\"extension\\/extension\\/fraud\",\"extension\\/extension\\/menu\",\"extension\\/extension\\/module\",\"extension\\/extension\\/payment\",\"extension\\/extension\\/report\",\"extension\\/extension\\/shipping\",\"extension\\/extension\\/theme\",\"extension\\/extension\\/total\",\"extension\\/feed\\/google_base\",\"extension\\/feed\\/google_sitemap\",\"extension\\/fraud\\/fraudlabspro\",\"extension\\/fraud\\/ip\",\"extension\\/fraud\\/maxmind\",\"extension\\/marketing\\/remarketing\",\"extension\\/module\\/account\",\"extension\\/module\\/amazon_login\",\"extension\\/module\\/amazon_pay\",\"extension\\/module\\/banner\",\"extension\\/module\\/bestseller\",\"extension\\/module\\/carousel\",\"extension\\/module\\/category\",\"extension\\/module\\/divido_calculator\",\"extension\\/module\\/ebay_listing\",\"extension\\/module\\/featured\",\"extension\\/module\\/filter\",\"extension\\/module\\/google_hangouts\",\"extension\\/module\\/html\",\"extension\\/module\\/information\",\"extension\\/module\\/klarna_checkout_module\",\"extension\\/module\\/latest\",\"extension\\/module\\/laybuy_layout\",\"extension\\/module\\/pilibaba_button\",\"extension\\/module\\/sagepay_direct_cards\",\"extension\\/module\\/sagepay_server_cards\",\"extension\\/module\\/slideshow\",\"extension\\/module\\/special\",\"extension\\/module\\/store\",\"extension\\/payment\\/amazon_login_pay\",\"extension\\/payment\\/authorizenet_aim\",\"extension\\/payment\\/authorizenet_sim\",\"extension\\/payment\\/bank_transfer\",\"extension\\/payment\\/bluepay_hosted\",\"extension\\/payment\\/bluepay_redirect\",\"extension\\/payment\\/cardconnect\",\"extension\\/payment\\/cardinity\",\"extension\\/payment\\/cheque\",\"extension\\/payment\\/cod\",\"extension\\/payment\\/divido\",\"extension\\/payment\\/eway\",\"extension\\/payment\\/firstdata\",\"extension\\/payment\\/firstdata_remote\",\"extension\\/payment\\/free_checkout\",\"extension\\/payment\\/g2apay\",\"extension\\/payment\\/globalpay\",\"extension\\/payment\\/globalpay_remote\",\"extension\\/payment\\/klarna_account\",\"extension\\/payment\\/klarna_checkout\",\"extension\\/payment\\/klarna_invoice\",\"extension\\/payment\\/laybuy\",\"extension\\/payment\\/liqpay\",\"extension\\/payment\\/nochex\",\"extension\\/payment\\/paymate\",\"extension\\/payment\\/paypoint\",\"extension\\/payment\\/payza\",\"extension\\/payment\\/perpetual_payments\",\"extension\\/payment\\/pilibaba\",\"extension\\/payment\\/realex\",\"extension\\/payment\\/realex_remote\",\"extension\\/payment\\/sagepay_direct\",\"extension\\/payment\\/sagepay_server\",\"extension\\/payment\\/sagepay_us\",\"extension\\/payment\\/securetrading_pp\",\"extension\\/payment\\/securetrading_ws\",\"extension\\/payment\\/skrill\",\"extension\\/payment\\/twocheckout\",\"extension\\/payment\\/web_payment_software\",\"extension\\/payment\\/worldpay\",\"extension\\/module\\/pp_braintree_button\",\"extension\\/payment\\/pp_braintree\",\"extension\\/report\\/customer_activity\",\"extension\\/report\\/customer_order\",\"extension\\/report\\/customer_reward\",\"extension\\/report\\/customer_search\",\"extension\\/report\\/customer_transaction\",\"extension\\/report\\/marketing\",\"extension\\/report\\/product_purchased\",\"extension\\/report\\/product_viewed\",\"extension\\/report\\/sale_coupon\",\"extension\\/report\\/sale_order\",\"extension\\/report\\/sale_return\",\"extension\\/report\\/sale_shipping\",\"extension\\/report\\/sale_tax\",\"extension\\/shipping\\/auspost\",\"extension\\/shipping\\/ec_ship\",\"extension\\/shipping\\/fedex\",\"extension\\/shipping\\/flat\",\"extension\\/shipping\\/free\",\"extension\\/shipping\\/item\",\"extension\\/shipping\\/parcelforce_48\",\"extension\\/shipping\\/pickup\",\"extension\\/shipping\\/royal_mail\",\"extension\\/shipping\\/ups\",\"extension\\/shipping\\/usps\",\"extension\\/shipping\\/weight\",\"extension\\/theme\\/default\",\"extension\\/total\\/coupon\",\"extension\\/total\\/credit\",\"extension\\/total\\/handling\",\"extension\\/total\\/klarna_fee\",\"extension\\/total\\/low_order_fee\",\"extension\\/total\\/reward\",\"extension\\/total\\/shipping\",\"extension\\/total\\/sub_total\",\"extension\\/total\\/tax\",\"extension\\/total\\/total\",\"extension\\/total\\/voucher\",\"localisation\\/country\",\"localisation\\/currency\",\"localisation\\/geo_zone\",\"localisation\\/language\",\"localisation\\/length_class\",\"localisation\\/location\",\"localisation\\/order_status\",\"localisation\\/return_action\",\"localisation\\/return_reason\",\"localisation\\/return_status\",\"localisation\\/stock_status\",\"localisation\\/tax_class\",\"localisation\\/tax_rate\",\"localisation\\/weight_class\",\"localisation\\/zone\",\"mail\\/affiliate\",\"mail\\/customer\",\"mail\\/forgotten\",\"mail\\/return\",\"mail\\/reward\",\"mail\\/transaction\",\"marketing\\/contact\",\"marketing\\/coupon\",\"marketing\\/marketing\",\"marketplace\\/api\",\"marketplace\\/event\",\"marketplace\\/extension\",\"marketplace\\/install\",\"marketplace\\/installer\",\"marketplace\\/marketplace\",\"marketplace\\/modification\",\"report\\/online\",\"report\\/report\",\"report\\/statistics\",\"sale\\/order\",\"sale\\/recurring\",\"sale\\/return\",\"sale\\/voucher\",\"sale\\/voucher_theme\",\"setting\\/setting\",\"setting\\/store\",\"startup\\/error\",\"startup\\/event\",\"startup\\/login\",\"startup\\/permission\",\"startup\\/router\",\"startup\\/sass\",\"startup\\/startup\",\"tool\\/backup\",\"tool\\/log\",\"tool\\/upload\",\"user\\/api\",\"user\\/user\",\"user\\/user_permission\"],\"modify\":[\"catalog\\/attribute\",\"catalog\\/attribute_group\",\"catalog\\/category\",\"catalog\\/download\",\"catalog\\/filter\",\"catalog\\/information\",\"catalog\\/manufacturer\",\"catalog\\/option\",\"catalog\\/product\",\"catalog\\/recurring\",\"catalog\\/review\",\"common\\/column_left\",\"common\\/developer\",\"common\\/filemanager\",\"common\\/profile\",\"common\\/security\",\"customer\\/custom_field\",\"customer\\/customer\",\"customer\\/customer_approval\",\"customer\\/customer_group\",\"design\\/banner\",\"design\\/layout\",\"design\\/theme\",\"design\\/translation\",\"design\\/seo_url\",\"event\\/statistics\",\"event\\/theme\",\"extension\\/advertise\\/google\",\"extension\\/analytics\\/google\",\"extension\\/captcha\\/basic\",\"extension\\/captcha\\/google\",\"extension\\/dashboard\\/activity\",\"extension\\/dashboard\\/chart\",\"extension\\/dashboard\\/customer\",\"extension\\/dashboard\\/map\",\"extension\\/dashboard\\/online\",\"extension\\/dashboard\\/order\",\"extension\\/dashboard\\/recent\",\"extension\\/dashboard\\/sale\",\"extension\\/extension\\/advertise\",\"extension\\/extension\\/analytics\",\"extension\\/extension\\/captcha\",\"extension\\/extension\\/dashboard\",\"extension\\/extension\\/feed\",\"extension\\/extension\\/fraud\",\"extension\\/extension\\/menu\",\"extension\\/extension\\/module\",\"extension\\/extension\\/payment\",\"extension\\/extension\\/report\",\"extension\\/extension\\/shipping\",\"extension\\/extension\\/theme\",\"extension\\/extension\\/total\",\"extension\\/feed\\/google_base\",\"extension\\/feed\\/google_sitemap\",\"extension\\/fraud\\/fraudlabspro\",\"extension\\/fraud\\/ip\",\"extension\\/fraud\\/maxmind\",\"extension\\/marketing\\/remarketing\",\"extension\\/module\\/account\",\"extension\\/module\\/amazon_login\",\"extension\\/module\\/amazon_pay\",\"extension\\/module\\/banner\",\"extension\\/module\\/bestseller\",\"extension\\/module\\/carousel\",\"extension\\/module\\/category\",\"extension\\/module\\/divido_calculator\",\"extension\\/module\\/ebay_listing\",\"extension\\/module\\/featured\",\"extension\\/module\\/filter\",\"extension\\/module\\/google_hangouts\",\"extension\\/module\\/html\",\"extension\\/module\\/information\",\"extension\\/module\\/klarna_checkout_module\",\"extension\\/module\\/latest\",\"extension\\/module\\/laybuy_layout\",\"extension\\/module\\/pilibaba_button\",\"extension\\/module\\/sagepay_direct_cards\",\"extension\\/module\\/sagepay_server_cards\",\"extension\\/module\\/slideshow\",\"extension\\/module\\/special\",\"extension\\/module\\/store\",\"extension\\/payment\\/amazon_login_pay\",\"extension\\/payment\\/authorizenet_aim\",\"extension\\/payment\\/authorizenet_sim\",\"extension\\/payment\\/bank_transfer\",\"extension\\/payment\\/bluepay_hosted\",\"extension\\/payment\\/bluepay_redirect\",\"extension\\/payment\\/cardconnect\",\"extension\\/payment\\/cardinity\",\"extension\\/payment\\/cheque\",\"extension\\/payment\\/cod\",\"extension\\/payment\\/divido\",\"extension\\/payment\\/eway\",\"extension\\/payment\\/firstdata\",\"extension\\/payment\\/firstdata_remote\",\"extension\\/payment\\/free_checkout\",\"extension\\/payment\\/g2apay\",\"extension\\/payment\\/globalpay\",\"extension\\/payment\\/globalpay_remote\",\"extension\\/payment\\/klarna_account\",\"extension\\/payment\\/klarna_checkout\",\"extension\\/payment\\/klarna_invoice\",\"extension\\/payment\\/laybuy\",\"extension\\/payment\\/liqpay\",\"extension\\/payment\\/nochex\",\"extension\\/payment\\/paymate\",\"extension\\/payment\\/paypoint\",\"extension\\/payment\\/payza\",\"extension\\/payment\\/perpetual_payments\",\"extension\\/payment\\/pilibaba\",\"extension\\/payment\\/realex\",\"extension\\/payment\\/realex_remote\",\"extension\\/payment\\/sagepay_direct\",\"extension\\/payment\\/sagepay_server\",\"extension\\/payment\\/sagepay_us\",\"extension\\/payment\\/securetrading_pp\",\"extension\\/payment\\/securetrading_ws\",\"extension\\/payment\\/skrill\",\"extension\\/payment\\/twocheckout\",\"extension\\/payment\\/web_payment_software\",\"extension\\/payment\\/worldpay\",\"extension\\/module\\/pp_braintree_button\",\"extension\\/payment\\/pp_braintree\",\"extension\\/report\\/customer_activity\",\"extension\\/report\\/customer_order\",\"extension\\/report\\/customer_reward\",\"extension\\/report\\/customer_search\",\"extension\\/report\\/customer_transaction\",\"extension\\/report\\/marketing\",\"extension\\/report\\/product_purchased\",\"extension\\/report\\/product_viewed\",\"extension\\/report\\/sale_coupon\",\"extension\\/report\\/sale_order\",\"extension\\/report\\/sale_return\",\"extension\\/report\\/sale_shipping\",\"extension\\/report\\/sale_tax\",\"extension\\/shipping\\/auspost\",\"extension\\/shipping\\/ec_ship\",\"extension\\/shipping\\/fedex\",\"extension\\/shipping\\/flat\",\"extension\\/shipping\\/free\",\"extension\\/shipping\\/item\",\"extension\\/shipping\\/parcelforce_48\",\"extension\\/shipping\\/pickup\",\"extension\\/shipping\\/royal_mail\",\"extension\\/shipping\\/ups\",\"extension\\/shipping\\/usps\",\"extension\\/shipping\\/weight\",\"extension\\/theme\\/default\",\"extension\\/total\\/coupon\",\"extension\\/total\\/credit\",\"extension\\/total\\/handling\",\"extension\\/total\\/klarna_fee\",\"extension\\/total\\/low_order_fee\",\"extension\\/total\\/reward\",\"extension\\/total\\/shipping\",\"extension\\/total\\/sub_total\",\"extension\\/total\\/tax\",\"extension\\/total\\/total\",\"extension\\/total\\/voucher\",\"localisation\\/country\",\"localisation\\/currency\",\"localisation\\/geo_zone\",\"localisation\\/language\",\"localisation\\/length_class\",\"localisation\\/location\",\"localisation\\/order_status\",\"localisation\\/return_action\",\"localisation\\/return_reason\",\"localisation\\/return_status\",\"localisation\\/stock_status\",\"localisation\\/tax_class\",\"localisation\\/tax_rate\",\"localisation\\/weight_class\",\"localisation\\/zone\",\"mail\\/affiliate\",\"mail\\/customer\",\"mail\\/forgotten\",\"mail\\/return\",\"mail\\/reward\",\"mail\\/transaction\",\"marketing\\/contact\",\"marketing\\/coupon\",\"marketing\\/marketing\",\"marketplace\\/event\",\"marketplace\\/api\",\"marketplace\\/extension\",\"marketplace\\/install\",\"marketplace\\/installer\",\"marketplace\\/marketplace\",\"marketplace\\/modification\",\"report\\/online\",\"report\\/report\",\"report\\/statistics\",\"sale\\/order\",\"sale\\/recurring\",\"sale\\/return\",\"sale\\/voucher\",\"sale\\/voucher_theme\",\"setting\\/setting\",\"setting\\/store\",\"startup\\/error\",\"startup\\/event\",\"startup\\/login\",\"startup\\/permission\",\"startup\\/router\",\"startup\\/sass\",\"startup\\/startup\",\"tool\\/backup\",\"tool\\/log\",\"tool\\/upload\",\"user\\/api\",\"user\\/user\",\"user\\/user_permission\"]}'),
+(1,'Administrator','{\"access\":[\"catalog\\/attribute\",\"catalog\\/attribute_group\",\"catalog\\/category\",\"catalog\\/download\",\"catalog\\/filter\",\"catalog\\/information\",\"catalog\\/manufacturer\",\"catalog\\/option\",\"catalog\\/product\",\"catalog\\/recurring\",\"catalog\\/review\",\"common\\/column_left\",\"common\\/developer\",\"common\\/filemanager\",\"common\\/profile\",\"common\\/security\",\"customer\\/custom_field\",\"customer\\/customer\",\"customer\\/customer_approval\",\"customer\\/customer_group\",\"design\\/banner\",\"design\\/layout\",\"design\\/theme\",\"design\\/translation\",\"design\\/seo_url\",\"event\\/statistics\",\"event\\/theme\",\"extension\\/advertise\\/google\",\"extension\\/analytics\\/google\",\"extension\\/captcha\\/basic\",\"extension\\/captcha\\/google\",\"extension\\/dashboard\\/activity\",\"extension\\/dashboard\\/chart\",\"extension\\/dashboard\\/customer\",\"extension\\/dashboard\\/map\",\"extension\\/dashboard\\/online\",\"extension\\/dashboard\\/order\",\"extension\\/dashboard\\/recent\",\"extension\\/dashboard\\/sale\",\"extension\\/extension\\/advertise\",\"extension\\/extension\\/analytics\",\"extension\\/extension\\/captcha\",\"extension\\/extension\\/dashboard\",\"extension\\/extension\\/feed\",\"extension\\/extension\\/fraud\",\"extension\\/extension\\/menu\",\"extension\\/extension\\/module\",\"extension\\/extension\\/payment\",\"extension\\/extension\\/report\",\"extension\\/extension\\/shipping\",\"extension\\/extension\\/theme\",\"extension\\/extension\\/total\",\"extension\\/feed\\/google_base\",\"extension\\/feed\\/google_sitemap\",\"extension\\/fraud\\/fraudlabspro\",\"extension\\/fraud\\/ip\",\"extension\\/fraud\\/maxmind\",\"extension\\/marketing\\/remarketing\",\"extension\\/module\\/account\",\"extension\\/module\\/amazon_login\",\"extension\\/module\\/amazon_pay\",\"extension\\/module\\/banner\",\"extension\\/module\\/bestseller\",\"extension\\/module\\/carousel\",\"extension\\/module\\/category\",\"extension\\/module\\/divido_calculator\",\"extension\\/module\\/ebay_listing\",\"extension\\/module\\/featured\",\"extension\\/module\\/filter\",\"extension\\/module\\/google_hangouts\",\"extension\\/module\\/html\",\"extension\\/module\\/information\",\"extension\\/module\\/klarna_checkout_module\",\"extension\\/module\\/latest\",\"extension\\/module\\/laybuy_layout\",\"extension\\/module\\/pilibaba_button\",\"extension\\/module\\/sagepay_direct_cards\",\"extension\\/module\\/sagepay_server_cards\",\"extension\\/module\\/slideshow\",\"extension\\/module\\/special\",\"extension\\/module\\/store\",\"extension\\/payment\\/amazon_login_pay\",\"extension\\/payment\\/authorizenet_aim\",\"extension\\/payment\\/authorizenet_sim\",\"extension\\/payment\\/bank_transfer\",\"extension\\/payment\\/bluepay_hosted\",\"extension\\/payment\\/bluepay_redirect\",\"extension\\/payment\\/cardconnect\",\"extension\\/payment\\/cardinity\",\"extension\\/payment\\/cheque\",\"extension\\/payment\\/cod\",\"extension\\/payment\\/divido\",\"extension\\/payment\\/eway\",\"extension\\/payment\\/firstdata\",\"extension\\/payment\\/firstdata_remote\",\"extension\\/payment\\/free_checkout\",\"extension\\/payment\\/g2apay\",\"extension\\/payment\\/globalpay\",\"extension\\/payment\\/globalpay_remote\",\"extension\\/payment\\/klarna_account\",\"extension\\/payment\\/klarna_checkout\",\"extension\\/payment\\/klarna_invoice\",\"extension\\/payment\\/laybuy\",\"extension\\/payment\\/liqpay\",\"extension\\/payment\\/nochex\",\"extension\\/payment\\/paymate\",\"extension\\/payment\\/paypoint\",\"extension\\/payment\\/payza\",\"extension\\/payment\\/perpetual_payments\",\"extension\\/payment\\/pilibaba\",\"extension\\/payment\\/realex\",\"extension\\/payment\\/realex_remote\",\"extension\\/payment\\/sagepay_direct\",\"extension\\/payment\\/sagepay_server\",\"extension\\/payment\\/sagepay_us\",\"extension\\/payment\\/securetrading_pp\",\"extension\\/payment\\/securetrading_ws\",\"extension\\/payment\\/skrill\",\"extension\\/payment\\/twocheckout\",\"extension\\/payment\\/web_payment_software\",\"extension\\/payment\\/worldpay\",\"extension\\/module\\/pp_braintree_button\",\"extension\\/payment\\/pp_braintree\",\"extension\\/report\\/customer_activity\",\"extension\\/report\\/customer_order\",\"extension\\/report\\/customer_reward\",\"extension\\/report\\/customer_search\",\"extension\\/report\\/customer_transaction\",\"extension\\/report\\/marketing\",\"extension\\/report\\/product_purchased\",\"extension\\/report\\/product_viewed\",\"extension\\/report\\/sale_coupon\",\"extension\\/report\\/sale_order\",\"extension\\/report\\/sale_return\",\"extension\\/report\\/sale_shipping\",\"extension\\/report\\/sale_tax\",\"extension\\/shipping\\/auspost\",\"extension\\/shipping\\/ec_ship\",\"extension\\/shipping\\/fedex\",\"extension\\/shipping\\/flat\",\"extension\\/shipping\\/free\",\"extension\\/shipping\\/item\",\"extension\\/shipping\\/parcelforce_48\",\"extension\\/shipping\\/pickup\",\"extension\\/shipping\\/royal_mail\",\"extension\\/shipping\\/ups\",\"extension\\/shipping\\/usps\",\"extension\\/shipping\\/weight\",\"extension\\/theme\\/default\",\"extension\\/total\\/coupon\",\"extension\\/total\\/credit\",\"extension\\/total\\/handling\",\"extension\\/total\\/klarna_fee\",\"extension\\/total\\/low_order_fee\",\"extension\\/total\\/reward\",\"extension\\/total\\/shipping\",\"extension\\/total\\/sub_total\",\"extension\\/total\\/tax\",\"extension\\/total\\/total\",\"extension\\/total\\/voucher\",\"localisation\\/country\",\"localisation\\/currency\",\"localisation\\/geo_zone\",\"localisation\\/language\",\"localisation\\/length_class\",\"localisation\\/location\",\"localisation\\/order_status\",\"localisation\\/return_action\",\"localisation\\/return_reason\",\"localisation\\/return_status\",\"localisation\\/stock_status\",\"localisation\\/tax_class\",\"localisation\\/tax_rate\",\"localisation\\/weight_class\",\"localisation\\/zone\",\"mail\\/affiliate\",\"mail\\/customer\",\"mail\\/forgotten\",\"mail\\/return\",\"mail\\/reward\",\"mail\\/transaction\",\"marketing\\/contact\",\"marketing\\/coupon\",\"marketing\\/marketing\",\"marketplace\\/api\",\"marketplace\\/event\",\"marketplace\\/extension\",\"marketplace\\/install\",\"marketplace\\/installer\",\"marketplace\\/marketplace\",\"marketplace\\/modification\",\"report\\/online\",\"report\\/report\",\"report\\/statistics\",\"sale\\/order\",\"sale\\/recurring\",\"sale\\/return\",\"sale\\/voucher\",\"sale\\/voucher_theme\",\"setting\\/setting\",\"setting\\/store\",\"startup\\/error\",\"startup\\/event\",\"startup\\/login\",\"startup\\/permission\",\"startup\\/router\",\"startup\\/sass\",\"startup\\/startup\",\"tool\\/backup\",\"tool\\/log\",\"tool\\/upload\",\"user\\/api\",\"user\\/user\",\"user\\/user_permission\",\"extension\\/module\\/filter\",\"extension\\/captcha\\/basic\",\"captcha\\/basic\",\"extension\\/captcha\\/google\",\"captcha\\/google\",\"extension\\/feed\\/google_sitemap\",\"extension\\/module\\/information\",\"extension\\/module\\/html\",\"extension\\/module\\/store\",\"extension\\/module\\/special\"],\"modify\":[\"catalog\\/attribute\",\"catalog\\/attribute_group\",\"catalog\\/category\",\"catalog\\/download\",\"catalog\\/filter\",\"catalog\\/information\",\"catalog\\/manufacturer\",\"catalog\\/option\",\"catalog\\/product\",\"catalog\\/recurring\",\"catalog\\/review\",\"common\\/column_left\",\"common\\/developer\",\"common\\/filemanager\",\"common\\/profile\",\"common\\/security\",\"customer\\/custom_field\",\"customer\\/customer\",\"customer\\/customer_approval\",\"customer\\/customer_group\",\"design\\/banner\",\"design\\/layout\",\"design\\/theme\",\"design\\/translation\",\"design\\/seo_url\",\"event\\/statistics\",\"event\\/theme\",\"extension\\/advertise\\/google\",\"extension\\/analytics\\/google\",\"extension\\/captcha\\/basic\",\"extension\\/captcha\\/google\",\"extension\\/dashboard\\/activity\",\"extension\\/dashboard\\/chart\",\"extension\\/dashboard\\/customer\",\"extension\\/dashboard\\/map\",\"extension\\/dashboard\\/online\",\"extension\\/dashboard\\/order\",\"extension\\/dashboard\\/recent\",\"extension\\/dashboard\\/sale\",\"extension\\/extension\\/advertise\",\"extension\\/extension\\/analytics\",\"extension\\/extension\\/captcha\",\"extension\\/extension\\/dashboard\",\"extension\\/extension\\/feed\",\"extension\\/extension\\/fraud\",\"extension\\/extension\\/menu\",\"extension\\/extension\\/module\",\"extension\\/extension\\/payment\",\"extension\\/extension\\/report\",\"extension\\/extension\\/shipping\",\"extension\\/extension\\/theme\",\"extension\\/extension\\/total\",\"extension\\/feed\\/google_base\",\"extension\\/feed\\/google_sitemap\",\"extension\\/fraud\\/fraudlabspro\",\"extension\\/fraud\\/ip\",\"extension\\/fraud\\/maxmind\",\"extension\\/marketing\\/remarketing\",\"extension\\/module\\/account\",\"extension\\/module\\/amazon_login\",\"extension\\/module\\/amazon_pay\",\"extension\\/module\\/banner\",\"extension\\/module\\/bestseller\",\"extension\\/module\\/carousel\",\"extension\\/module\\/category\",\"extension\\/module\\/divido_calculator\",\"extension\\/module\\/ebay_listing\",\"extension\\/module\\/featured\",\"extension\\/module\\/filter\",\"extension\\/module\\/google_hangouts\",\"extension\\/module\\/html\",\"extension\\/module\\/information\",\"extension\\/module\\/klarna_checkout_module\",\"extension\\/module\\/latest\",\"extension\\/module\\/laybuy_layout\",\"extension\\/module\\/pilibaba_button\",\"extension\\/module\\/sagepay_direct_cards\",\"extension\\/module\\/sagepay_server_cards\",\"extension\\/module\\/slideshow\",\"extension\\/module\\/special\",\"extension\\/module\\/store\",\"extension\\/payment\\/amazon_login_pay\",\"extension\\/payment\\/authorizenet_aim\",\"extension\\/payment\\/authorizenet_sim\",\"extension\\/payment\\/bank_transfer\",\"extension\\/payment\\/bluepay_hosted\",\"extension\\/payment\\/bluepay_redirect\",\"extension\\/payment\\/cardconnect\",\"extension\\/payment\\/cardinity\",\"extension\\/payment\\/cheque\",\"extension\\/payment\\/cod\",\"extension\\/payment\\/divido\",\"extension\\/payment\\/eway\",\"extension\\/payment\\/firstdata\",\"extension\\/payment\\/firstdata_remote\",\"extension\\/payment\\/free_checkout\",\"extension\\/payment\\/g2apay\",\"extension\\/payment\\/globalpay\",\"extension\\/payment\\/globalpay_remote\",\"extension\\/payment\\/klarna_account\",\"extension\\/payment\\/klarna_checkout\",\"extension\\/payment\\/klarna_invoice\",\"extension\\/payment\\/laybuy\",\"extension\\/payment\\/liqpay\",\"extension\\/payment\\/nochex\",\"extension\\/payment\\/paymate\",\"extension\\/payment\\/paypoint\",\"extension\\/payment\\/payza\",\"extension\\/payment\\/perpetual_payments\",\"extension\\/payment\\/pilibaba\",\"extension\\/payment\\/realex\",\"extension\\/payment\\/realex_remote\",\"extension\\/payment\\/sagepay_direct\",\"extension\\/payment\\/sagepay_server\",\"extension\\/payment\\/sagepay_us\",\"extension\\/payment\\/securetrading_pp\",\"extension\\/payment\\/securetrading_ws\",\"extension\\/payment\\/skrill\",\"extension\\/payment\\/twocheckout\",\"extension\\/payment\\/web_payment_software\",\"extension\\/payment\\/worldpay\",\"extension\\/module\\/pp_braintree_button\",\"extension\\/payment\\/pp_braintree\",\"extension\\/report\\/customer_activity\",\"extension\\/report\\/customer_order\",\"extension\\/report\\/customer_reward\",\"extension\\/report\\/customer_search\",\"extension\\/report\\/customer_transaction\",\"extension\\/report\\/marketing\",\"extension\\/report\\/product_purchased\",\"extension\\/report\\/product_viewed\",\"extension\\/report\\/sale_coupon\",\"extension\\/report\\/sale_order\",\"extension\\/report\\/sale_return\",\"extension\\/report\\/sale_shipping\",\"extension\\/report\\/sale_tax\",\"extension\\/shipping\\/auspost\",\"extension\\/shipping\\/ec_ship\",\"extension\\/shipping\\/fedex\",\"extension\\/shipping\\/flat\",\"extension\\/shipping\\/free\",\"extension\\/shipping\\/item\",\"extension\\/shipping\\/parcelforce_48\",\"extension\\/shipping\\/pickup\",\"extension\\/shipping\\/royal_mail\",\"extension\\/shipping\\/ups\",\"extension\\/shipping\\/usps\",\"extension\\/shipping\\/weight\",\"extension\\/theme\\/default\",\"extension\\/total\\/coupon\",\"extension\\/total\\/credit\",\"extension\\/total\\/handling\",\"extension\\/total\\/klarna_fee\",\"extension\\/total\\/low_order_fee\",\"extension\\/total\\/reward\",\"extension\\/total\\/shipping\",\"extension\\/total\\/sub_total\",\"extension\\/total\\/tax\",\"extension\\/total\\/total\",\"extension\\/total\\/voucher\",\"localisation\\/country\",\"localisation\\/currency\",\"localisation\\/geo_zone\",\"localisation\\/language\",\"localisation\\/length_class\",\"localisation\\/location\",\"localisation\\/order_status\",\"localisation\\/return_action\",\"localisation\\/return_reason\",\"localisation\\/return_status\",\"localisation\\/stock_status\",\"localisation\\/tax_class\",\"localisation\\/tax_rate\",\"localisation\\/weight_class\",\"localisation\\/zone\",\"mail\\/affiliate\",\"mail\\/customer\",\"mail\\/forgotten\",\"mail\\/return\",\"mail\\/reward\",\"mail\\/transaction\",\"marketing\\/contact\",\"marketing\\/coupon\",\"marketing\\/marketing\",\"marketplace\\/event\",\"marketplace\\/api\",\"marketplace\\/extension\",\"marketplace\\/install\",\"marketplace\\/installer\",\"marketplace\\/marketplace\",\"marketplace\\/modification\",\"report\\/online\",\"report\\/report\",\"report\\/statistics\",\"sale\\/order\",\"sale\\/recurring\",\"sale\\/return\",\"sale\\/voucher\",\"sale\\/voucher_theme\",\"setting\\/setting\",\"setting\\/store\",\"startup\\/error\",\"startup\\/event\",\"startup\\/login\",\"startup\\/permission\",\"startup\\/router\",\"startup\\/sass\",\"startup\\/startup\",\"tool\\/backup\",\"tool\\/log\",\"tool\\/upload\",\"user\\/api\",\"user\\/user\",\"user\\/user_permission\",\"extension\\/module\\/filter\",\"extension\\/captcha\\/basic\",\"captcha\\/basic\",\"extension\\/captcha\\/google\",\"captcha\\/google\",\"extension\\/feed\\/google_sitemap\",\"extension\\/module\\/information\",\"extension\\/module\\/html\",\"extension\\/module\\/store\",\"extension\\/module\\/special\"]}'),
 (10,'Demonstration','');
 
 /*Table structure for table `oc_voucher` */
