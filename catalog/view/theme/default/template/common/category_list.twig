@@ -10,7 +10,7 @@
 		</ul>
 		{% for category in categories %}
 			<div class="product-layout col-lg-4 col-md-4 col-sm-6 col-xs-12">
-				<div class="product-thumb transition">
+				<div class="product-thumb" style="border-radius:10px;">
 					<div class="image" id="categoryListContainer">
 						<img id="categoryListImg" src="{{ category.image }}" alt="{{ category.name }}" title="{{ category.name }}" class="img-responsive"/>
 						<div id="categoryListOverlay"></div>
@@ -22,7 +22,7 @@
 							</button>
 						</div>
 					</div>
-					<div style="text-align:center">
+					<div style="text-align:center; padding-top:10px; padding-bottom:15px;">
 						<h3>
 							{# <a href="{{ category.href }}">{{ category.name }}</a> #}
 							{{ category.name }}

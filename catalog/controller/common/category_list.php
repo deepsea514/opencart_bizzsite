@@ -24,7 +24,7 @@ class ControllerCommonCategoryList extends Controller {
 		);
 
 		$data['breadcrumbs'][] = array(
-			'text' => "CategoryList",
+			'text' => "Products",
 			'href' => $this->url->link('common/category_list')
 		);
 
