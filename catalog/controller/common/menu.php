@@ -40,6 +40,8 @@ class ControllerCommonMenu extends Controller {
 				);
 			}
 		}
+		$data['contact'] = $this->url->link('information/contact');
+
 
 		return $this->load->view('common/menu', $data);
 	}

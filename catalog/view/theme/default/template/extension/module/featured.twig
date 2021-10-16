@@ -1,132 +1,137 @@
-  <div class="container-fluid coman-bg">
-      <div class="container">
-          <div class="row">
-              <div class="pc-section">
-                  <div class="col-md-6">
-                      <div class="pc-text">
-                          <p>Nieuwe en gebruikte producten</p>
-                          <h2>Bekijk ons volledig aanbod</h2>
-                          <p class="gray-text">Wij helpen u graag met de aankoop van hard en software. Wij kunnen voor
-                              u
-                              kant-en-klare computers, printers, laptops (Windows en Apple) tablets, smartphones,
-                              software zoals Microsoft Office, Antivirus pakketten. Een maatwerk computer
-                              samenstellen naar wens van de klant.</p>
-                      </div>
-                  </div>
-                  <div class="col-md-6">
-                      <div class="col-md-12 d-flex pc-box">
-                      {% for product in products|slice(0,4) %}
-                          <div class="col-md-3">
-                              <div class="pc-img">
-                                  <a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" /></a>
-                              </div>
-                              <div class="laptop-text">
-                                  <p><a href="{{ product.href }}">{{ product.name|slice(0,10) }}...</a></p>
-                                  <p>{{ product.price }}</p>
-                                  <p>{{ product.category }}</p>
-                              </div>
-                          </div>
-                            {% endfor %}
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
- 
 <div class="container-fluid coman-bg">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-1"></div>
+	<div class="container">
+		<div class="row">
+			<div class="pc-section">
+				<div class="col-md-6">
+					<div class="pc-text">
+						<p>Nieuwe en gebruikte producten</p>
+						<h2>Bekijk ons volledig aanbod</h2>
+						<p class="gray-text">Wij helpen u graag met de aankoop van hard en software. Wij kunnen voor
+														                              u
+														                              kant-en-klare computers, printers, laptops (Windows en Apple) tablets, smartphones,
+														                              software zoals Microsoft Office, Antivirus pakketten. Een maatwerk computer
+														                              samenstellen naar wens van de klant.</p>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="col-md-12 d-flex pc-box">
+						{% for product in products|slice(0,4) %}
+							<div class="col-md-3">
+								<div class="pc-img">
+									<a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive"/></a>
+								</div>
+								<div class="laptop-text">
+									<p>
+										<a href="{{ product.href }}">
+											{% if product.name|length < 12 %}
+												{{ product.name }}
+											{% else %}
+												{{ product.name|slice(0,12) }}...
+											{% endif %}
+										</a>
+									</p>
+									<p>{{ product.price }}</p>
+									<p>{{ product.category }}</p>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container-fluid coman-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-1"></div>
 
-                {% for product in products|slice(0,3) %}
-                    <div class="card col-md-3 d-flex" style="background: white; border: 1px solid;  border-radius: 20px; border-color: #6bffff; margin-left:10px; margin-right:15px; margin-bottom:10px; overflow: hide; height:180px;">
-                        <div class="col-md-4" style="height:120px;">
-                            <div class="card-img">
-                                <a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" /></a>
-                            </div>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-text" style="height:120px">
-                                <h2>{{ product.name }}</h2>
-                                <p>{{ product.description }}</p>
-                            </div>
-                            <div class="btn-box" style="bottom:5px;">
-                                    <a href="{{ product.href }}">Bekijk ons aanbod</a>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-            <div class="row">
-                <div class="col-md-1"></div>
+			{% for product in products|slice(0,3) %}
+				<div class="card col-md-3 d-flex" style="background: white; border: 1px solid;  border-radius: 20px; border-color: #6bffff; margin-left:10px; margin-right:15px; margin-bottom:10px; overflow: hide; height:200px;">
+					<div class="col-md-4" style="height:170px;">
+						<div class="card-img">
+							<a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive"/></a>
+						</div>
+					</div>
+					<div class="col-md-8">
+						<div class="card-text" style="height:140px">
+							<h2>{{ product.name }}</h2>
+							<p>{{ product.description }}</p>
+						</div>
+						<div class="btn-box" style="bottom:5px;">
+							<a href="{{ product.href }}">Bekijk ons aanbod</a>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+		<div class="row">
+			<div class="col-md-1"></div>
 
-                {% for product in products|slice(3,3) %}
-                    <div class="card col-md-3 d-flex" style="background: white; border: 1px solid;  border-radius: 20px; border-color: #6bffff; margin-left:10px; margin-right:15px; margin-bottom:10px; overflow: hide; height:180px;">
-                        <div class="col-md-4" style="height:120px;">
-                            <div class="card-img">
-                                <a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" /></a>
-                            </div>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-text" style="height:120px">
-                                <h2>{{ product.name }}</h2>
-                                <p>{{ product.description }}</p>
-                            </div>
-                            <div class="btn-box" style="bottom:5px;">
-                                    <a href="{{ product.href }}">Bekijk ons aanbod</a>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
+			{% for product in products|slice(3,3) %}
+				<div class="card col-md-3 d-flex" style="background: white; border: 1px solid;  border-radius: 20px; border-color: #6bffff; margin-left:10px; margin-right:15px; margin-bottom:10px; overflow: hide; height:200px;">
+					<div class="col-md-4" style="height:170px;">
+						<div class="card-img">
+							<a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive"/></a>
+						</div>
+					</div>
+					<div class="col-md-8">
+						<div class="card-text" style="height:140px">
+							<h2>{{ product.name }}</h2>
+							<p>{{ product.description }}</p>
+						</div>
+						<div class="btn-box" style="bottom:5px;">
+							<a href="{{ product.href }}">Bekijk ons aanbod</a>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12" style="background-image: url(./image/catalog/images/bg.png);padding: 0;">
+			<div class="mob-section">
+				<div class="col-md-2"></div>
+				<div class="col-md-4">
+					<div class="mob-img">
+						<img src="./image/catalog/images/mobile-price.png" alt="">
+					</div>
+					<div class="abs-test">
+						<p>* alleen op afspraak</p>
+					</div>
+				</div>
+				<div class="col-md-5">
+					<div class="mob-text">
+						<h2>Smartphone & Tablet reparatie</h2>
+						<h4>Standard 6 maanden garantie</h4>
+						<p>Reparatie van uw smartphone of tablet meestal binnen 30 minuten (op afspraak)
+												                            terwijl u geniet van een heerlijk bakje koffie of thee. Willen altijd de beste
+												                            service
+												                            bieden en daarom doen wij er alles aan om uw toestel op de best mogelijke
+												                            manier te maken. Daarnaast krijgt u 6 maanden garantie (hardware) wanneer u
+												                            uw smartphone, tablet laat repareren bij ons.</p>
+						<a href="javascript:void(0)">Reparatieverzoek aanvragen</a>
+					</div>
+				</div>
+				<div class="col-md-1"></div>
 
-    </div>
-
-  <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12" style="background-image: url(./image/catalog/images/bg.png);padding: 0;">
-            <div class="mob-section">
-                <div class="col-md-2"></div>
-                <div class="col-md-4">
-                    <div class="mob-img">
-                        <img src="./image/catalog/images/mobile-price.png" alt="">
-                    </div>
-                    <div class="abs-test">
-                        <p>* alleen op afspraak</p>
-                    </div>
-                </div>
-                <div class="col-md-5">
-                    <div class="mob-text">
-                        <h2>Smartphone & Tablet reparatie</h2>
-                        <h4>Standard 6 maanden garantie</h4>
-                        <p>Reparatie van uw smartphone of tablet meestal binnen 30 minuten (op afspraak)
-                            terwijl u geniet van een heerlijk bakje koffie of thee. Willen altijd de beste
-                            service
-                            bieden en daarom doen wij er alles aan om uw toestel op de best mogelijke
-                            manier te maken. Daarnaast krijgt u 6 maanden garantie (hardware) wanneer u
-                            uw smartphone, tablet laat repareren bij ons.</p>
-                        <a href="javascript:void(0)">Reparatieverzoek aanvragen</a>
-                    </div>
-                </div>
-                <div class="col-md-1"></div>
-
-            </div>
-        </div>
-    </div>
-  </div>
-
-  <div class="container-fluid" style="margin-top:15px;">
-      <div class="container">
-          <div class="row">
-              <div class="col-md-12">
-                  <div class="contact-banner">
-                      <h2>Altijd profesioneel en snel ondersteuning nodig? <a href="#">0541 - 355
-                              919</a>
-                      </h2>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container-fluid" style="margin-top:15px;">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="contact-banner">
+					<h2>Altijd profesioneel en snel ondersteuning nodig?
+						<a href="#">0541 - 355
+												                              919</a>
+					</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

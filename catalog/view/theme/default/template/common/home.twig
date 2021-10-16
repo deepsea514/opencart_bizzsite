@@ -1,31 +1,31 @@
 {{ header }}
 <div id="common-home">
-  <div class="row">{{ column_left }}
-    {% if column_left and column_right %}
-    {% set class = 'col-sm-6' %}
-    {% elseif column_left or column_right %}
-    {% set class = 'col-sm-9' %}
-    {% else %}
-    {% set class = 'col-sm-12' %}
-    {% endif %}
+	<div class="row">{{ column_left }}
+		{% if column_left and column_right %}
+			{% set class = 'col-sm-6' %}
+		{% elseif column_left or column_right %}
+			{% set class = 'col-sm-9' %}
+		{% else %}
+			{% set class = 'col-sm-12' %}
+		{% endif %}
 
-			<div class="container-fluid p-0 sliders">
-			   <div id="demo" class="carousel slide" data-ride="carousel">
-			      <div class="carousel-inner">
-				    <div class="carousel-item bg-set-image-1 active">
+		<div class="container-fluid p-0 sliders">
+			<div id="demo" class="carousel slide" data-ride="carousel">
+				<div class="carousel-inner">
+					<div class="carousel-item bg-set-image-1 active">
 						<div class="carousel-caption">
 							<div class="container">
 								<div class="row align-items-center justify-content-left">
 									<div class="col-md-7 p-0">
 										<div class="slide_description_wrapper">
 											<div class="slide_description">
-													<div class="intro-layer with_corner_border with_padding intro_section huge-padding">
-														<h2 class="highlight">Onbezorad en veiling online</h2>
-														<h6>Onbezorgd en veilig online Betrouwbaar advies waar en wanneer u</h6>
-														<p>Één vertrouwde plek voor al uw online benodigdheden. Onze professionals geven u persoonlijk advies op maat.</p>
-														<a href="{{product_link}}" class="slider_btns">Naar Producten<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-														<span class="bottom_corners"></span>
-													</div>
+												<div class="intro-layer with_corner_border with_padding intro_section huge-padding">
+													<h2 class="highlight">Onbezorad en veiling online</h2>
+													<h6>Onbezorgd en veilig online Betrouwbaar advies waar en wanneer u</h6>
+													<p>Één vertrouwde plek voor al uw online benodigdheden. Onze professionals geven u persoonlijk advies op maat.</p>
+													<a href="{{product_link}}" class="slider_btns">Naar Producten<i class="fa fa-arrow-right" aria-hidden="true"></i>
+													</a>
+													<span class="bottom_corners"></span>
 												</div>
 											</div>
 										</div>
@@ -33,43 +33,67 @@
 								</div>
 							</div>
 						</div>
-					 </div>
-				   </div>
-				 </div>
-			 
-			<div class="container-fluid direct-section">
-				<div class="container">
-				 <div class="row">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container-fluid direct-section">
+			<div class="container">
+				<div class="row">
 					<div class="col-lg-8 col-md-8 col-12 col-sm-12">
-					  <div class="row">
-					  <div class="col-lg-2 col-md-2 col-12 col-sm-12">
-						<div class="irect-section-text"> 
-							<h3>Direct<br>naar:</h3>	
-						 </div>
-						</div>
-						<div class="col-lg-10 col-md-10 col-12 col-sm-12" style="padding: 0 0 ">
-							<div class="direct-products-list"> 
-								 <ul>
-								   {% for category in categories|slice(0,9) %}
-                                        <li><a href="{{ category.href }}"><img src="{{ category.image }}" alt="{{category.name }}"><span>{{ category.name }}</span></a></li>
-                                	{% endfor %}
-								 </ul>
+						<div class="row">
+							<div class="col-lg-2 col-md-2 col-12 col-sm-12">
+								<div class="irect-section-text">
+									<h3>Direct<br>naar:</h3>
+								</div>
+							</div>
+							<div class="col-lg-10 col-md-10 col-12 col-sm-12" style="padding: 0 0 ">
+								<div class="direct-products-list">
+									<div class="carousel swiper-viewport">
+										<div id="carouselCategoryList" class="swiper-container">
+											<div class="swiper-wrapper">
+												{% for category in categories %}
+													<div class="swiper-slide text-center">
+															<a href="{{ category.href }}"><img src="{{ category.image }}" alt="{{ category.name }}"><span>{{ category.name }}</span></a>
+													</div>
+												{% endfor %}
+											</div>
+										</div>
+										<div class="swiper-pager">
+											<div class="swiper-button-next"></div>
+											<div class="swiper-button-prev"></div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
-					   </div>
-					 </div>
+					</div>
 					<div class="col-lg-4 col-md-4 col-12 col-sm-12">
-						<div class="direct-images"> 
+						<div class="direct-images">
 							<img src="./image/catalog/images/direct-images.png" alt="direct-images" class="img-fluid">
-					  </div>	
-				  </div>
-			     </div>
-			   </div>
+						</div>
+					</div>
+				</div>
 			</div>
+		</div>
 
-    <div id="content" class="{{ class }}">{{ content_top }}{{ content_bottom }}</div>
-    
-    {{ column_right }}
-  </div>
+		<div id="content" class="{{ class }}">{{ content_top }}{{ content_bottom }}</div>
+
+		{{ column_right }}
+	</div>
 </div>
+
+<script type="text/javascript"><!--
+$('#carouselCategoryList').swiper({
+	mode: 'horizontal',
+	slidesPerView: 5,
+	pagination: '.carouselCategoryList',
+	paginationClickable: true,
+	nextButton: '.carousel .swiper-button-next',
+    prevButton: '.carousel .swiper-button-prev',
+	autoplay: 2500,
+	loop: true
+});
+--></script>
 {{ footer }}
