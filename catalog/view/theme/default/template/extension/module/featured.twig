@@ -2,7 +2,8 @@
 	<div class="container">
 		<div class="row">
 			<div class="pc-section">
-				<div class="col-md-6">
+				<div class="col-md-1"></div>
+				<div class="col-md-5">
 					<div class="pc-text">
 						<p>Nieuwe en gebruikte producten</p>
 						<h2>Bekijk ons volledig aanbod</h2>
@@ -13,7 +14,7 @@
 														                              samenstellen naar wens van de klant.</p>
 					</div>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-5">
 					<div class="col-md-12 d-flex pc-box">
 						{% for product in products|slice(0,4) %}
 							<div class="col-md-3">
@@ -37,18 +38,36 @@
 						{% endfor %}
 					</div>
 				</div>
+				<div class="col-md-1"></div>
 			</div>
 		</div>
 	</div>
 </div>
 <div class="container-fluid coman-bg">
+<div class="container">
+  <div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+    <div class="carousel swiper-viewport" style="background : #f4fafd; margin-bottom: 0;">
+      <div id="carousel{{ module }}" class="swiper-container">
+        <div class="swiper-wrapper">
+        {% for banner in banners %}
+          <div class="swiper-slide text-center">{% if banner.link %}<a href="{{ banner.link }}"><img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-responsive" /></a>{% else %}<img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-responsive" />{% endif %}</div>
+          {% endfor %}</div>
+    	</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="container-fluid coman-bg">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-1"></div>
-
 			{% for product in products|slice(0,3) %}
-				<div class="card col-md-3 d-flex" style="background: white; border: 1px solid;  border-radius: 20px; border-color: #6bffff; margin-left:10px; margin-right:15px; margin-bottom:10px; overflow: hide; height:200px;">
+				<div class="card col-md-3 d-flex" style="background: white; border: 1px solid;  border-radius: 20px; border-color: #6bffff61; margin-left:15px; margin-right:20px; margin-bottom:10px; overflow: hide; height:200px;">
 					<div class="col-md-4" style="height:170px;">
+					{# <img src="{{ products_left }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive"/> #}
 						<div class="card-img">
 							<a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive"/></a>
 						</div>
@@ -64,12 +83,14 @@
 					</div>
 				</div>
 			{% endfor %}
+				<div class="col-md-1"></div>
+
 		</div>
 		<div class="row">
 			<div class="col-md-1"></div>
 
 			{% for product in products|slice(3,3) %}
-				<div class="card col-md-3 d-flex" style="background: white; border: 1px solid;  border-radius: 20px; border-color: #6bffff; margin-left:10px; margin-right:15px; margin-bottom:10px; overflow: hide; height:200px;">
+				<div class="card col-md-3 d-flex" style="background: white; border: 1px solid;  border-radius: 20px; border-color: #6bffff61; margin-left:15px; margin-right:20px; margin-bottom:10px; overflow: hide; height:200px;">
 					<div class="col-md-4" style="height:170px;">
 						<div class="card-img">
 							<a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive"/></a>
@@ -86,6 +107,8 @@
 					</div>
 				</div>
 			{% endfor %}
+				<div class="col-md-1"></div>
+
 		</div>
 	</div>
 </div>
@@ -121,7 +144,7 @@
 		</div>
 	</div>
 </div>
-<div class="container-fluid" style="margin-top:15px;">
+<div class="container-fluid" style="margin-top:28px;">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
@@ -135,3 +158,15 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript"><!--
+$('#carousel{{ module }}').swiper({
+	mode: 'horizontal',
+	slidesPerView: 5,
+	pagination: '.carousel{{ module }}',
+	paginationClickable: true,
+	nextButton: '.carousel .swiper-button-next',
+    prevButton: '.carousel .swiper-button-prev',
+	autoplay: 2500,
+	loop: true
+});
+--></script>

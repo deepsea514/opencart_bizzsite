@@ -9,6 +9,32 @@ class ControllerExtensionModuleFeatured extends Controller {
 
 		$data['products'] = array();
 
+		static $module = 0;
+
+		$this->load->model('design/banner');
+		$this->load->model('tool/image');
+		
+		$this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+		$this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+		$this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.min.js');
+
+		$data['banners'] = array();
+
+		$results = $this->model_design_banner->getBanner(8);
+
+		foreach ($results as $result) {
+			if (is_file(DIR_IMAGE . $result['image'])) {
+				$data['banners'][] = array(
+					'title' => $result['title'],
+					'link'  => $result['link'],
+					'image' => $this->model_tool_image->resize($result['image'], $setting['width'], $setting['height'])
+				);
+			}
+		}
+
+		$data['module'] = $module++;
+
+
 		// if (!$setting['limit']) {
 		// 	$setting['limit'] = 4;
 		// }
@@ -67,6 +93,9 @@ class ControllerExtensionModuleFeatured extends Controller {
 				}
 			}
 		}
+
+		$data['products_right'] = $this->model_tool_image->resize('catalog/images/product-right.png', $setting['width'], $setting['height']);
+		$data['products_left'] = $this->model_tool_image->resize('catalog/images/product-left.png', $setting['width'], $setting['height']);
 
 		if ($data['products']) {
 			return $this->load->view('extension/module/featured', $data);

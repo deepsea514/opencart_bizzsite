@@ -401,7 +401,7 @@ padding-left: 19px;
 }
 .direct-images img{
 	position: absolute;
-	top: -279px;
+	top: -179px;
 	right: 0;
 }
 .brand-icons-section{
@@ -520,8 +520,7 @@ padding-left: 19px;
 }
 .pc-section {
   background: #f4fafd;
-  margin-bottom: 40px;
-  padding: 40px 0;
+  padding-top: 20px;
   display: flex;
 }
 .pc-text {

@@ -64,10 +64,7 @@ class ControllerCommonHome extends Controller {
 				);
 			}
 		}
-
 		$data['product_link'] = $this->url->link('common/category_list');
-
-
 		$this->response->setOutput($this->load->view('common/home', $data));
 	}
 }
