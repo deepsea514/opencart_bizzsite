@@ -12,18 +12,18 @@
             <div class="dropdown-inner"> {% for children in category.children|batch(category.children|length / category.column|round(1, 'ceil')) %}
               <ul class="list-unstyled">
                 {% for child in children %}
-                <li><a href="{{ child.href }}" style="color: #000 !important;  font-size:15px !important;">{{ child.name }}</a></li>
+                <li><a href="{{ child.href }}" style="color: #000 !important;  font-size:20px !important;">{{ child.name }}</a></li>
                 {% endfor %}
               </ul>
               {% endfor %}</div>
-            <a href="{{ category.href }}" class="see-all" style="color: #000 !important;  font-size:15px !important;">{{ text_all }} {{ category.name }}</a> </div>
+            <a href="{{ category.href }}" class="see-all" style="color: #000 !important;  font-size:20px !important;">{{ text_all }} {{ category.name }}</a> </div>
         </li>
         {% else %}
-        <li><a href="{{ category.href }}" style="color: #000 !important; font-weight:bold !important; font-size:15px !important;">{{ category.name }}</a></li>
+        <li><a href="{{ category.href }}" style="color: #000 !important; font-weight:bold !important; font-size:20px !important; border:none;">{{ category.name }}</a></li>
         {% endif %}
         {% endfor %}
-        <li><a href="{{contact}}"><button type="button" style=" font-size:15px !important; color: #fff; display: inline-block; background: #f97d44; outline: none;  border: 0; border-radius: 4px;">Reparativerzoek</button></a></li>
-        <li><a href="{{contact}}"><button type="button" style=" font-size:15px !important; color: #fff; display: inline-block; background: #2882ad; outline: none;  border: 0; border-radius: 4px;">Zokelijk bestellen?</button></a></li>
+        <li><button type="button" style=" font-size:20px !important; color: #fff; display: inline-block; background: #f97d44; outline: none;  border: 0; border-radius: 4px; padding:15px; margin-left:10px;"><a href="{{contact}}" style=" font-size:20px !important; color: #fff; display: inline-block;">Reparativerzoek </a> </button></li>
+        <li><button type="button" style=" font-size:20px !important; color: #fff; display: inline-block; background: #2882ad; outline: none;  border: 0; border-radius: 4px; padding:15px; margin-left:20px;"><a href="{{contact}}" style=" font-size:20px !important; color: #fff; display: inline-block;">Zokelijk bestellen?</a></button></li>
       </ul>
     </div>
   </nav>

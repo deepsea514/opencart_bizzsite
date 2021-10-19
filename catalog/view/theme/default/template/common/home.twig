@@ -56,7 +56,12 @@
 											<div class="swiper-wrapper">
 												{% for category in categories %}
 													<div class="swiper-slide text-center">
-															<a href="{{ category.href }}"><img src="{{ category.image }}" alt="{{ category.name }}"><span>{{ category.name }}</span></a>
+															<div>
+																<a href="{{ category.href }}"><img src="{{ category.image }}" alt="{{ category.name }}"></a>
+															</div>
+															<div>
+																<a href="{{ category.href }}">{{ category.name }}</a>
+															</div>
 													</div>
 												{% endfor %}
 											</div>

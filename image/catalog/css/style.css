@@ -482,6 +482,7 @@ padding-left: 19px;
 }
 .mob-text {
   color: #fff;
+  padding-right: 20px;
 }
 .mob-text h2 {
   font-size: 25px;
@@ -528,19 +529,19 @@ padding-left: 19px;
 }
 .pc-text p:nth-child(1) {
   margin-bottom: 0;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 500;
   color: #48a5d5;
 }
 .pc-text h2 {
   margin-bottom: 20px;
-  font-size: 23px;
+  font-size: 25px;
   font-weight: 700;
   color: #1b3d57;
 }
 
 .pc-text .gray-text {
-  font-size: 15px;
+  font-size: 17px;
   color: #7f8f9d;
 }
 .pc-box {
@@ -664,7 +665,7 @@ padding-right: 15px;
 }
 .human-img {
   position: absolute;
-  top: -34px;
+  top: -55px;
 }
 .human-img img {
   width: 273px;
