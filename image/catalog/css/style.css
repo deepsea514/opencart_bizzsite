@@ -526,6 +526,7 @@ padding-left: 19px;
 }
 .pc-text {
   text-align: end;
+  padding-left: 50px;
 }
 .pc-text p:nth-child(1) {
   margin-bottom: 0;
