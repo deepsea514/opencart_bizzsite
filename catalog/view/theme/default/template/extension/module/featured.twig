@@ -60,15 +60,15 @@
   </div>
 </div>
 </div>
-<div class="container-fluid coman-bg">
+<div class="container-fluid coman-bg" style="padding-bottom:30px;">
 	<div class="container" style="width:100%">
 		<div class="row">
 			<div class="col-md-1"></div>
 			{% for product in products|slice(0,3) %}
-				<div class="card col-md-3 d-flex" style="background: white; border: 1px solid;  border-radius: 20px; border-color: #6bffff61; margin-left:25px; margin-right:25px; margin-bottom:10px; overflow: hide; height:200px;">
+				<div class="card col-md-3 d-flex" style="background: white; border: 1px solid;  border-radius: 25px; border-color: #6bffff61; margin-left:25px; margin-right:25px; margin-bottom:15px; overflow: hide; height:200px;">
 					<div class="col-md-4" style="height:170px;">
-					{# <img src="{{ products_left }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive"/> #}
 						<div class="card-img">
+					{# <img src="{{ products_left }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive"/> #}
 							<a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive"/></a>
 						</div>
 					</div>
@@ -112,7 +112,7 @@
 		</div>
 	</div>
 </div>
-<div class="container-fluid" style="padding:0; margin-top:28px;">
+<div class="container-fluid"  style="padding:0">
 		<div style="background-image: url(./image/catalog/images/bg.png);padding: 0;">
 	<div class="container" style="width:100%">
 			<div class="mob-section">
